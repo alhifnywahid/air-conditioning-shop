@@ -1,6 +1,5 @@
 import { CiUser } from "react-icons/ci";
 import { MdAlternateEmail } from "react-icons/md";
-import { MdOutlineEmail } from "react-icons/md";
 import Button from "../components/Button";
 function Layanan() {
   const dataLayanan = [
@@ -52,93 +51,106 @@ function Layanan() {
   ];
 
   return (
-    <div className="2xl:container mx-4 mt-4 md:px-8">
-      <div className="flex flex-col-reverse gap-4 justify-center items-center mb-4 md:flex-row rounded-xl p-4">
-        <div className="flex flex-col gap-4 justify-center items-center md:flex-1 md:items-start">
-          <h2 className="text-3xl font-bold w-fit md:text-3xl">Layanan Kami</h2>
-          <p className="w-fit text-justify md:text-left md:text-xl">
-            Kami dengan bangga menyediakan berbagai layanan berkualitas tinggi
-            terkait dengan sistem pendingin udara (AC) Anda. Dengan pengalaman
-            bertahun-tahun dalam industri ini, kami telah menjadi tujuan utama
-            bagi individu dan bisnis yang membutuhkan solusi AC yang andal dan
-            efisien. Berikut adalah beberapa layanan unggulan yang kami tawarkan
-          </p>
-          <Button
-            onClick={() => document.getElementById("modal_layanan").showModal()}
-          >
-            Pesan Layanan Sekarang!
-          </Button>
+    <>
+      <section className="bg-base-200 2xl:py-2">
+        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center md:flex-row">
+          <div className="flex flex-col gap-4 justify-center items-center md:flex-1 md:items-start">
+            <h2 className="text-3xl font-bold w-fit md:text-3xl">
+              Layanan Kami
+            </h2>
+            <p className="w-fit text-center md:text-left xl:text-xl">
+              Kami dengan bangga menyediakan berbagai layanan berkualitas tinggi
+              terkait dengan sistem pendingin udara (AC) Anda. Dengan pengalaman
+              bertahun-tahun dalam industri ini, kami telah menjadi tujuan utama
+              bagi individu dan bisnis yang membutuhkan solusi AC yang andal dan
+              efisien. Berikut adalah beberapa layanan unggulan yang kami
+              tawarkan
+            </p>
+            <Button
+              onClick={() =>
+                document.getElementById("modal_layanan").showModal()
+              }
+            >
+              Pesan Layanan Sekarang!
+            </Button>
+          </div>
+          <div className="md:flex-1">
+            <img loading="lazy" src="/public/banner.png" />
+          </div>
         </div>
-        <div className="md:flex-1">
-          <img src="/public/paid-2.jpg" alt="" />
+      </section>
+      <section className="bg-base-200 2xl:pb-2">
+        <div className="2xl:container xl:bg-base-100 p-5 rounded-xl grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {dataLayanan.map((item, index) => (
+            <div
+              key={index}
+              className="shadow-custom-1 border overflow-hidden rounded-md flex flex-col hover:shadow-blue-100 hover:shadow-xl"
+            >
+              <img
+                loading="lazy"
+                className="aspect-[3/2] object-cover pt-4 px-4 xs:p-0"
+                src={item.src}
+              />
+              <div className="flex flex-col gap-2 p-4 justify-center">
+                <h3 className="text-xl font-semibold line-clamp-1">
+                  {item.title}
+                </h3>
+                <p className="line-clamp-5">{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-      <div className="divider"></div>
-      <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {dataLayanan.map((item, index) => (
-          <div
-            key={index}
-            className="shadow-custom-1 border overflow-hidden rounded-md flex flex-col hover:shadow-blue-100 hover:shadow-xl"
-          >
-            <img
-              className="aspect-[3/2] object-cover pt-4 px-4 xs:p-0"
-              src={item.src}
-            />
-            <div className="flex flex-col gap-2 p-4 justify-center">
-              <h3 className="text-xl font-semibold line-clamp-1">
-                {item.title}
-              </h3>
-              <p className="line-clamp-5">{item.desc}</p>
+        <dialog id="modal_layanan" className="modal">
+          <div className="modal-box">
+            <div>
+              <h1 className="font-bold text-2xl m-4 text-center">
+                Pesan layanan kami
+              </h1>
+              <form className=" flex flex-col gap-4">
+                <label className="input input-bordered flex items-center gap-2">
+                  <CiUser />
+                  <input
+                    type="text"
+                    className="grow"
+                    placeholder="Nama Lengkap"
+                  />
+                </label>
+                <label className="input input-bordered flex items-center gap-2">
+                  <MdAlternateEmail />
+                  <input
+                    type="text"
+                    className="grow"
+                    placeholder="Email Aktif"
+                  />
+                </label>
+                <label className="form-control">
+                  <select className="select select-bordered">
+                    <option disabled selected>
+                      Pilih Layanan
+                    </option>
+                    {dataLayanan.map((item, index) => (
+                      <option key={index} value={item}>
+                        {item.title}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <textarea
+                  className="textarea textarea-bordered"
+                  placeholder="Pesan Tambahan"
+                ></textarea>
+                <Button type="submit">Pesan</Button>
+              </form>
+              <form method="dialog" className="mt-2">
+                <Button className="w-full bg-red-500 hover:bg-red-600 active:bg-red-700">
+                  Batal
+                </Button>
+              </form>
             </div>
           </div>
-        ))}
-      </div>
-      <dialog id="modal_layanan" className="modal">
-        <div className="modal-box">
-          <div>
-            <h1 className="font-bold text-2xl m-4 text-center">
-              Pesan layanan kami
-            </h1>
-            <form className=" flex flex-col gap-4">
-              <label className="input input-bordered flex items-center gap-2">
-                <CiUser />
-                <input
-                  type="text"
-                  className="grow"
-                  placeholder="Nama Lengkap"
-                />
-              </label>
-              <label className="input input-bordered flex items-center gap-2">
-                <MdAlternateEmail />
-                <input type="text" className="grow" placeholder="Email Aktif" />
-              </label>
-              <label className="form-control">
-                <select className="select select-bordered">
-                  <option disabled selected>
-                    Pilih Layanan
-                  </option>
-                  {dataLayanan.map((item, index) => (
-                    <option key={index} value={item}>
-                      {item.title}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <textarea
-                className="textarea textarea-bordered"
-                placeholder="Pesan Tambahan"
-              ></textarea>
-              <Button type="submit">Pesan</Button>
-            </form>
-            <form method="dialog" className="mt-2">
-              <Button className="w-full bg-red-500 hover:bg-red-600 active:bg-red-700">
-                Batal
-              </Button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-    </div>
+        </dialog>
+      </section>
+    </>
   );
 }
 

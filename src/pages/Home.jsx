@@ -86,38 +86,10 @@ function Home() {
               </div>
             </div>
           </div>
-          {/* <div className="hero-content flex-col justify-between items-center lg:flex-row-reverse min-w-full">
-            <div className="flex-1">
-              <img src="/banner-home.png" />
-            </div>
-            <div className="flex-1">
-              <h1 className="lg:text-5xl text-3xl font-bold mx-auto w-fit lg:w-full">
-                Berkah Teknik
-              </h1>
-              <p className="py-6 text-xl w-[80%] mx-auto text-center lg:w-full lg:text-left">
-                Menyediakan berbagai layanan berkualitas tinggi terkait dengan
-                sistem pendingin udara (AC) Anda.
-              </p>
-              <div className="flex gap-3 w-fit mx-auto lg:w-full">
-                <Link
-                  to="/layanan"
-                  className="btn bg-blue-500 hover:bg-blue-600 text-white"
-                >
-                  Layanan
-                </Link>
-                <Link
-                  to="/kontak"
-                  className="btn bg-blue-500 hover:bg-blue-600 text-white"
-                >
-                  Hubungi Kami
-                </Link>
-              </div>
-            </div>
-          </div> */}
         </div>
       </section>
 
-      <section className="bg-base-200 ">
+      <section className="bg-base-200">
         <div className="2xl:container bg-base-100 rounded-xl p-10 flex flex-col gap-6">
           <h1 className="text-center text-xl md:text-2xl font-bold text-slate-800">
             Temukan berbagai macam Air Conditioner dengan merk terbaik hanya di
@@ -561,7 +533,7 @@ const ListProducts = ({ productClick }) => {
   }, [activePage, searchQuery]);
 
   return (
-    <section className="bg-base-200">
+    <section className="bg-base-200 pb-2">
       <div
         className={`2xl:container bg-base-100 rounded-xl p-5 grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 relative ${
           listProducts === null || (listProducts.length === 0 && "p-20")
