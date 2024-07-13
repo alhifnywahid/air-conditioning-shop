@@ -1,18 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "../pages/Home";
-import Layanan from "../pages/Layanan";
-import Kontak from "../pages/Kontak";
-import Galery from "../pages/Galery";
-import KerjaSama from "../pages/KerjaSama";
-import NotFound from "../pages/NotFound";
-import DetailProduct from "../pages/DetailProduct";
-import Auth from "../pages/Auth";
-import Account from "../pages/Account";
-import AuthProtected from "./AuthProtected";
-import ForgetAccount from "../pages/ForgetAccount";
-import Header from "../components/Header";
-import Testing from "../pages/Testing";
 import Layout from "../layouts/Layout";
+import {
+  Account,
+  Auth,
+  DetailProduct,
+  ForgetAccount,
+  Galery,
+  Home,
+  KerjaSama,
+  Kontak,
+  Layanan,
+  NotFound,
+  Testing,
+} from "../pages";
+import AuthProtected from "./AuthProtected";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,94 +74,6 @@ const router = createBrowserRouter([
     element: <NotFound />,
   },
 ]);
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: (
-//       <>
-//         <Layout>
-//           <Home />
-//         </Layout>
-//       </>
-//     ),
-//   },
-//   {
-//     path: "product/:productId",
-//     element: (
-//       <>
-//         <Layout>
-//           <DetailProduct />
-//         </Layout>
-//       </>
-//     ),
-//   },
-//   {
-//     path: "layanan",
-//     element: (
-//       <>
-//         <Layout>
-//           <Layanan />
-//         </Layout>
-//       </>
-//     ),
-//   },
-//   {
-//     path: "galery",
-//     element: (
-//       <>
-//         <Layout>
-//           <Galery />
-//         </Layout>
-//       </>
-//     ),
-//   },
-//   {
-//     path: "kerja-sama",
-//     element: (
-//       <>
-//         <Layout>
-//           <KerjaSama />
-//         </Layout>
-//       </>
-//     ),
-//   },
-//   {
-//     path: "kontak",
-//     element: (
-//       <>
-//         <Layout>
-//           <Kontak />
-//         </Layout>
-//       </>
-//     ),
-//   },
-//   {
-//     path: "masuk",
-//     element: <Auth />,
-//   },
-//   {
-//     path: "daftar",
-//     element: <Auth />,
-//   },
-//   {
-//     path: "akun",
-//     element: (
-//       <AuthProtected>
-//         <Layout>
-//           <Account />
-//         </Layout>
-//       </AuthProtected>
-//     ),
-//   },
-//   {
-//     path: "ganti-akun",
-//     element: <ForgetAccount />,
-//   },
-//   {
-//     path: "*",
-//     element: <NotFound />,
-//   },
-// ]);
 
 const Routes = () => {
   return <RouterProvider router={router} />;

@@ -72,7 +72,7 @@ function Kontak() {
           <div className="md:flex-1">
             <img
               loading="lazy"
-              src="/public/kontak-banner.png"
+              src="/kontak-banner.png"
               className="w-full"
             />
           </div>

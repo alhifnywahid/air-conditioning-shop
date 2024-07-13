@@ -9,15 +9,22 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import { Button, CardProduct, Pagination, SearchProduct, SkeletonProducts } from "../components";
+import {
+  Button,
+  CardProduct,
+  Pagination,
+  SearchProduct,
+  SkeletonProducts,
+} from "../components";
 import { SearchContext, SearchProvider } from "../context/SearchContext";
 import { product } from "../service/product.services";
 import { products } from "../service/products.services";
 import { searchProducts } from "../service/searchproducts.services";
 import { formatIDR } from "../utils/Function";
+import ListProducts from "../components/ListProducts";
 
 function Home() {
-  const [comparation, setComparation] = useState(false);
+  const [isComparation, setIsComparation] = useState(false);
   const [listComparation, setListComparation] = useState([
     {
       id: "",
@@ -34,7 +41,7 @@ function Home() {
   ]);
 
   const productClick = (e) => {
-    if (!comparation) return false;
+    if (!isComparation) return false;
     e.preventDefault();
     const id = e.target.getAttribute("data-id");
     const src = e.target.getAttribute("data-src");
@@ -99,7 +106,6 @@ function Home() {
               />
             ))}
           </div>
-          Array
         </div>
       </section>
 
@@ -107,8 +113,8 @@ function Home() {
         <div className="2xl:container bg-base-100 rounded-xl p-5 grid grid-cols-2 gap-2 md:flex">
           <FilterProduct />
           <ComparisonProduct
-            setShowModal={setComparation}
-            showModal={comparation}
+            setShowModal={setIsComparation}
+            showModal={isComparation}
             listItem={listComparation}
             setListItem={setListComparation}
           />
@@ -128,7 +134,6 @@ const ComparisonProduct = (props) => {
   const [dataComparation, setDataComparation] = useState([]);
 
   const handlerStartComparation = async () => {
-    console.log(listItem);
     const filledItems = listItem.filter((item) => item.id !== "");
     if (filledItems.length < 2) {
       toast.error("Item minimal 2 dan maksimal 3.");
@@ -239,7 +244,7 @@ const ComparisonProduct = (props) => {
 };
 
 const Tbody = ({ data }) => {
-  const listTitle = [
+  const titleDescription = [
     "Produk",
     "Harga",
     "Brand",
@@ -256,7 +261,7 @@ const Tbody = ({ data }) => {
 
   return (
     <tbody>
-      {listTitle.map((item, index) => (
+      {titleDescription.map((item, index) => (
         <tr key={index}>
           <th>{item}</th>
           {index === 0 && data.map((a, b) => <td key={b}>{a.title}</td>)}
@@ -497,75 +502,72 @@ const FilterProduct = () => {
   );
 };
 
-const ListProducts = ({ productClick }) => {
-  const [listProducts, setListProducts] = useState([]);
-  const [activePage, setActivePage] = useState(1);
-  const [pages, setPages] = useState({});
-  const { searchQuery } = useContext(SearchContext);
+// const ListProducts = ({ productClick }) => {
+//   const [listProducts, setListProducts] = useState([]);
+//   const [activePage, setActivePage] = useState(1);
+//   const [pages, setPages] = useState({});
+//   const { searchQuery } = useContext(SearchContext);
 
-  const loadProducts = (page) => {
-    setListProducts([]);
-    if (searchQuery) {
-      searchProducts(searchQuery, page, 12).then((item) => {
-        if (!item.products) {
-          setListProducts(null);
-        } else {
-          setListProducts(item.products);
-          setPages(item);
-        }
-      });
-    } else {
-      products(page, 12).then((item) => {
-        setListProducts(item.products);
-        setPages(item);
-      });
-    }
-  };
+//   const loadProducts = (page) => {
+//     setListProducts([]);
+//     if (searchQuery) {
+//       searchProducts(searchQuery, page, 12).then((item) => {
+//         if (!item.products) {
+//           setListProducts(null);
+//         } else {
+//           setListProducts(item.products);
+//           setPages(item);
+//         }
+//       });
+//     } else {
+//       products(page, 12).then((item) => {
+//         setListProducts(item.products);
+//         setPages(item);
+//       });
+//     }
+//   };
 
-  useEffect(() => {
-    loadProducts(activePage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activePage, searchQuery]);
+//   useEffect(() => {
+//     loadProducts(activePage);
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [activePage, searchQuery]);
 
-  return (
-    <section className="bg-base-200 pb-2">
-      <div
-        className={`2xl:container bg-base-100 rounded-xl p-5 grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 relative ${
-          listProducts === null || (listProducts.length === 0 && "p-20")
-        }`}
-      >
-        {listProducts === null && (
-          <div className="w-full p-10 flex justify-center items-center col-span-full flex-col">
-            <BiFileFind size={150} />
-            <h2 className="font-bold text-xl">Produk tidak di temukan!</h2>
-          </div>
-        )}
+//   return (
+//     <section className="bg-base-200 pb-2">
+//       <div
+//         className={`2xl:container bg-base-100 rounded-xl p-5 grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 relative ${
+//           listProducts === null || (listProducts.length === 0 && "p-20")
+//         }`}
+//       >
+//         {listProducts === null && (
+//           <div className="w-full p-10 flex justify-center items-center col-span-full flex-col">
+//             <BiFileFind size={150} />
+//             <h2 className="font-bold text-xl">Produk tidak di temukan!</h2>
+//           </div>
+//         )}
 
-        {listProducts !== null &&
-          listProducts.length === 0 &&
-          [...Array(12)].map((_, i) => <SkeletonProducts key={i} />)}
+//         {listProducts !== null &&
+//           listProducts.length === 0 &&
+//           [...Array(12)].map((_, i) => <SkeletonProducts key={i} />)}
 
-        {listProducts !== null &&
-          listProducts.length > 0 &&
-          listProducts.map((item, index) => (
-            <CardProduct key={index} item={item} productClick={productClick} />
-          ))}
-
-        {/* {listProducts !== null && listProducts.length > 0 && ( */}
-        <div
-          className={`mt-5 flex justify-center items-center w-full col-span-full flex-col ${
-            listProducts === null && "hidden"
-          }`}
-        >
-          <Pagination
-            pages={pages}
-            onPageChange={(page) => setActivePage(page.selected + 1)}
-          />
-        </div>
-        {/* )} */}
-      </div>
-    </section>
-  );
-};
+//         {listProducts !== null &&
+//           listProducts.length > 0 &&
+//           listProducts.map((item, index) => (
+//             <CardProduct key={index} item={item} productClick={productClick} />
+//           ))}
+//         <div
+//           className={`mt-5 flex justify-center items-center w-full col-span-full flex-col ${
+//             listProducts === null && "hidden"
+//           }`}
+//         >
+//           <Pagination
+//             pages={pages}
+//             onPageChange={(page) => setActivePage(page.selected + 1)}
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
 
 export default Home;

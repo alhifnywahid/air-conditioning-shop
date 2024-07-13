@@ -4,9 +4,6 @@ import Button from "../components/Button";
 import { useEffect } from "react";
 function Layanan() {
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   
   const dataLayanan = [
     {

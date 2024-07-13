@@ -1,0 +1,11 @@
+export { default as Home } from "./Home";
+export { default as Layanan } from "./Layanan";
+export { default as Galery } from "./Galery";
+export { default as KerjaSama } from "./KerjaSama";
+export { default as Kontak } from "./Kontak";
+export { default as Account } from "./Account";
+export { default as NotFound } from "./NotFound";
+export { default as Auth } from "./Auth";
+export { default as ForgetAccount } from "./ForgetAccount";
+export { default as DetailProduct } from "./DetailProduct";
+export { default as Testing } from "./Testing";
