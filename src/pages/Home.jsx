@@ -1,27 +1,22 @@
-import SearchProduct from "../components/SearchProduct";
-import SkeletonProducts from "../components/SkeletonProducts";
-import CardProduct from "../components/CardProduct";
-import Pagination from "../components/Pagination";
-import Button from "../components/Button";
-import { products } from "../service/products.services";
-import { product } from "../service/product.services";
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { CgArrowsExchange } from "react-icons/cg";
-import { LuFilter } from "react-icons/lu";
-import { IoClose } from "react-icons/io5";
-import { toast } from "react-toastify";
-import { CiSquarePlus } from "react-icons/ci";
-import { formatIDR } from "../utils/Function";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "rc-pagination/assets/index.css";
-import { SearchContext, SearchProvider } from "../context/SearchContext";
-import { searchProducts } from "../service/searchproducts.services";
+import { useContext, useEffect, useState } from "react";
 import { BiFileFind } from "react-icons/bi";
+import { CgArrowsExchange } from "react-icons/cg";
+import { CiSquarePlus } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
+import { LuFilter } from "react-icons/lu";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { Button, CardProduct, Pagination, SearchProduct, SkeletonProducts } from "../components";
+import { SearchContext, SearchProvider } from "../context/SearchContext";
+import { product } from "../service/product.services";
+import { products } from "../service/products.services";
+import { searchProducts } from "../service/searchproducts.services";
+import { formatIDR } from "../utils/Function";
 
 function Home() {
-  const imageIndexes = Array.from({ length: 10 }, (_, index) => index + 1);
   const [comparation, setComparation] = useState(false);
   const [listComparation, setListComparation] = useState([
     {
@@ -39,7 +34,7 @@ function Home() {
   ]);
 
   const productClick = (e) => {
-    if (!comparation) return false
+    if (!comparation) return false;
     e.preventDefault();
     const id = e.target.getAttribute("data-id");
     const src = e.target.getAttribute("data-src");
@@ -96,14 +91,15 @@ function Home() {
             sini!
           </h1>
           <div className="grid grid-cols-2 md:grid-cols-5 w-fit gap-2 mx-auto">
-            {imageIndexes.map((index) => (
+            {[...Array(10)].map((_, i) => (
               <img
-                key={index}
+                key={i + 1}
                 className="rounded-md shadow border w-44"
-                src={`/brand/${index}.png`}
+                src={`/brand/${i + 1}.png`}
               />
             ))}
           </div>
+          Array
         </div>
       </section>
 
@@ -124,7 +120,7 @@ function Home() {
     </SearchProvider>
   );
 }
-``
+``;
 const ComparisonProduct = (props) => {
   const { showModal, setShowModal, listItem, setListItem } = props;
 
@@ -505,7 +501,6 @@ const ListProducts = ({ productClick }) => {
   const [listProducts, setListProducts] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pages, setPages] = useState({});
-  const skeletonIndex = Array.from({ length: 12 }, (_, index) => index + 1);
   const { searchQuery } = useContext(SearchContext);
 
   const loadProducts = (page) => {
@@ -548,7 +543,7 @@ const ListProducts = ({ productClick }) => {
 
         {listProducts !== null &&
           listProducts.length === 0 &&
-          skeletonIndex.map((item) => <SkeletonProducts key={item} />)}
+          [...Array(12)].map((_, i) => <SkeletonProducts key={i} />)}
 
         {listProducts !== null &&
           listProducts.length > 0 &&
@@ -557,12 +552,16 @@ const ListProducts = ({ productClick }) => {
           ))}
 
         {/* {listProducts !== null && listProducts.length > 0 && ( */}
-          <div className={`mt-5 flex justify-center items-center w-full col-span-full flex-col ${listProducts === null && "hidden"}`}>
-            <Pagination
-              pages={pages}
-              onPageChange={(page) => setActivePage(page.selected + 1)}
-            />
-          </div>
+        <div
+          className={`mt-5 flex justify-center items-center w-full col-span-full flex-col ${
+            listProducts === null && "hidden"
+          }`}
+        >
+          <Pagination
+            pages={pages}
+            onPageChange={(page) => setActivePage(page.selected + 1)}
+          />
+        </div>
         {/* )} */}
       </div>
     </section>

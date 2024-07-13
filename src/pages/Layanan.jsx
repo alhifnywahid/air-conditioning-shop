@@ -1,7 +1,13 @@
 import { CiUser } from "react-icons/ci";
 import { MdAlternateEmail } from "react-icons/md";
 import Button from "../components/Button";
+import { useEffect } from "react";
 function Layanan() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const dataLayanan = [
     {
       src: "/layanan/1.png",
@@ -53,18 +59,19 @@ function Layanan() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center md:flex-row">
-          <div className="flex flex-col gap-4 justify-center items-center md:flex-1 md:items-start">
+        <div
+          className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center lg:flex-row"
+        >
+          <div className="flex flex-col gap-4 justify-center items-center lg:flex-1 box-border lg:m-6 lg:items-start">
             <h2 className="text-3xl font-bold w-fit md:text-3xl">
               Layanan Kami
             </h2>
-            <p className="w-fit text-center md:text-left xl:text-xl">
+            <p className="w-fit text-center lg:text-left xl:text-xl xs:w-[90%] sm:w-[70%] lg:w-[85%]">
               Kami dengan bangga menyediakan berbagai layanan berkualitas tinggi
               terkait dengan sistem pendingin udara (AC) Anda. Dengan pengalaman
               bertahun-tahun dalam industri ini, kami telah menjadi tujuan utama
               bagi individu dan bisnis yang membutuhkan solusi AC yang andal dan
-              efisien. Berikut adalah beberapa layanan unggulan yang kami
-              tawarkan
+              efisien.
             </p>
             <Button
               onClick={() =>
@@ -75,7 +82,11 @@ function Layanan() {
             </Button>
           </div>
           <div className="md:flex-1">
-            <img loading="lazy" src="/public/banner.png" />
+            <img
+              loading="lazy"
+              className="md:w-[85%] mx-auto lg:w-full"
+              src="/public/banner.png"
+            />
           </div>
         </div>
       </section>
@@ -125,7 +136,7 @@ function Layanan() {
                 </label>
                 <label className="form-control">
                   <select className="select select-bordered">
-                    <option disabled selected>
+                    <option disabled defaultValue="none">
                       Pilih Layanan
                     </option>
                     {dataLayanan.map((item, index) => (

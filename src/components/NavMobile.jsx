@@ -1,9 +1,9 @@
-import { IoHomeOutline } from "react-icons/io5";
-import Button from "./Button";
 import { BsMenuButton } from "react-icons/bs";
+import { IoHomeOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import CartIcon from "./CartIcon";
 import AccountIcon from "./AccountIcon";
+import Button from "./Button";
+import CartIcon from "./CartIcon";
 
 const NavMobile = () => {
   return (

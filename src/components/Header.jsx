@@ -9,7 +9,7 @@ export default function Header() {
       <div className="shadow w-full sticky top-0 z-10 bg-base-100">
         <div className="navbar 2xl:container rounded-md">
           <div className="navbar-start">
-            <Link to="/" className="btn btn-ghost sm:text-2xl">
+            <Link to="/" className="btn btn-ghost text-xl sm:text-2xl">
               Berkah Teknik
             </Link>
           </div>

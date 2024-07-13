@@ -20,8 +20,7 @@ function AuthLayout() {
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const carauselCount = Array.from({ length: 7 }, (_, index) => index + 1);
+  
   useEffect(() => {
     document.title = "Login";
 
@@ -150,15 +149,15 @@ function AuthLayout() {
         </div>
 
         <div className="hidden xl:grid grid-cols-4 grid-rows-4 gap-1 w-full h-screen col-span-2">
-          {carauselCount.map((item, index) => (
+          {[...Array(7)].map((_,i) => (
             <FadeCarousel
-              key={index}
+              key={i}
               grayscale={grayscale}
               images={images}
-              imgIndex={index}
-              className={`${index == 0 && "row-span-2 col-span-3"} ${
-                index == 4 && "row-span-2 col-span-2"
-              } ${index == 5 && "row-span-2"}`}
+              imgIndex={i}
+              className={`${i == 0 && "row-span-2 col-span-3"} ${
+                i == 4 && "row-span-2 col-span-2"
+              } ${i == 5 && "row-span-2"}`}
             />
           ))}
         </div>

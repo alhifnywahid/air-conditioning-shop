@@ -1,7 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import NavMobile from "../components/NavMobile";
+import { Footer, Header, NavMobile } from "../components";
 
 const Layout = () => {
   return (
