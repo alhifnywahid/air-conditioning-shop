@@ -1,13 +1,12 @@
-import { getImages } from "./../service/getImages.services";
-import Button from "../components/Button";
 import { useEffect, useRef, useState } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { FcNext, FcPrevious } from "react-icons/fc";
+import "react-loading-skeleton/dist/skeleton.css";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import "react-loading-skeleton/dist/skeleton.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { getImages } from "./../service/getImages.services";
 function Galery() {
   const [imageHeader, setImageHeader] = useState([]);
   const [imgBody, setImgBody] = useState([]);

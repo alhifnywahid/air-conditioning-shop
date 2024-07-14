@@ -9,4 +9,4 @@ const AccountIcon = () => {
   );
 };
 
-export default AccountIcon
+export default AccountIcon;

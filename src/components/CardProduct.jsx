@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { formatIDR } from "../utils/Function";
 import Slider from "react-slick/lib/slider";
+import { formatIDR } from "../utils/Function";
 
-function CardProduct({ item, productClick, ...props }) {
+function CardProduct({ item, ...props }) {
   const settings = () => ({
     dots: false,
     infinite: true,
@@ -16,26 +16,25 @@ function CardProduct({ item, productClick, ...props }) {
   return (
     <Link
       {...props}
-      onClick={productClick}
-      to={`product/${item._id}`}
+      to={`/product/${item._id}`}
       data-id={item._id}
       data-src={item.image[0]}
-      className={`shadow rounded-xl p-4 border hover:shadow-blue-400 transition-all`}
+      className={`shadow-custom-1 rounded-xl border hover:shadow-blue-400 transition-all overflow-hidden`}
     >
-      <div className={`aspect-[1/1] overflow-hidden mb-2 pointer-events-none`}>
+      <div className={`aspect-[1/1] overflow-hidden pointer-events-none`}>
         <Slider {...settings()}>
           {item.image.map((image) => (
             <div key={`${item.id}`}>
               <img
                 loading="lazy"
                 src={image}
-                className="w-full rounded pointer-events-none"
+                className="w-full pointer-events-none"
               />
             </div>
           ))}
         </Slider>
       </div>
-      <div className="flex flex-col gap-3 pointer-events-none">
+      <div className="flex flex-col gap-3 pointer-events-none p-4">
         <h3 className="line-clamp-2 pointer-events-none">{item.title}</h3>
         <div className="flex gap-2 pointer-events-none">
           <div className="badge bg-blue-400 text-white rounded flex justify-center pointer-events-none">

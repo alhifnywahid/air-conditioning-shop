@@ -1,14 +1,14 @@
-import Input from "./../components/Input";
-import Form from "./../components/Form";
-import Button from "../components/Button";
 import CrossfadeCarousel from "@notbaldrick/react-crossfade-carousel";
+import { useEffect, useState } from "react";
 import { FaFacebook, FaKey } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import Button from "../components/Button";
 import { auth } from "../service/auth.services";
 import { getImages } from "../service/getImages.services";
+import Form from "./../components/Form";
+import Input from "./../components/Input";
 
 function AuthLayout() {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ function AuthLayout() {
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   useEffect(() => {
     document.title = "Login";
 
@@ -33,7 +33,7 @@ function AuthLayout() {
       newImages.push(await getImages("square", 4));
       newImages.push(await getImages("portrait", 1));
       newImages.push(await getImages("square", 5));
-      setImages(newImages); 
+      setImages(newImages);
     };
     allImage();
   }, []);
@@ -66,16 +66,16 @@ function AuthLayout() {
       <div className="w-full h-screen grid grid-cols-1 justify-center items-center xl:grid-cols-3">
         <div className="outlin flex flex-col justify-center items-center ">
           {images.length <= 0 && (
-              <Form className="w-[75%] sm:w-[500px] xl:w-[80%] flex flex-col gap-3">
-                <span className="min-h-12 skeleton my-10 rounded"></span>
-                <span className="min-h-12 skeleton rounded"></span>
-                <span className="min-h-12 skeleton rounded"></span>
-                <span className="min-h-4 skeleton rounded"></span>
-                <span className="min-h-12 skeleton rounded"></span>
-                <span className="min-h-4 my-4 skeleton rounded"></span>
-                <span className="min-h-12 skeleton rounded"></span>
-                <span className="min-h-12 skeleton rounded"></span>
-              </Form>
+            <Form className="w-[75%] sm:w-[500px] xl:w-[80%] flex flex-col gap-3">
+              <span className="min-h-12 skeleton my-10 rounded"></span>
+              <span className="min-h-12 skeleton rounded"></span>
+              <span className="min-h-12 skeleton rounded"></span>
+              <span className="min-h-4 skeleton rounded"></span>
+              <span className="min-h-12 skeleton rounded"></span>
+              <span className="min-h-4 my-4 skeleton rounded"></span>
+              <span className="min-h-12 skeleton rounded"></span>
+              <span className="min-h-12 skeleton rounded"></span>
+            </Form>
           )}
           {images.length > 0 && (
             <>
@@ -149,7 +149,7 @@ function AuthLayout() {
         </div>
 
         <div className="hidden xl:grid grid-cols-4 grid-rows-4 gap-1 w-full h-screen col-span-2">
-          {[...Array(7)].map((_,i) => (
+          {[...Array(7)].map((_, i) => (
             <FadeCarousel
               key={i}
               grayscale={grayscale}
@@ -166,7 +166,12 @@ function AuthLayout() {
   );
 }
 
-const FadeCarousel = ({ className = "", grayscale = false, images = [], imgIndex = 0 }) => {
+const FadeCarousel = ({
+  className = "",
+  grayscale = false,
+  images = [],
+  imgIndex = 0,
+}) => {
   const isImages = images.length === 0;
   return (
     <CrossfadeCarousel
@@ -179,6 +184,5 @@ const FadeCarousel = ({ className = "", grayscale = false, images = [], imgIndex
     />
   );
 };
-
 
 export default AuthLayout;

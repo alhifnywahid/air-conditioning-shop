@@ -23,13 +23,12 @@ const CartIcon = () => {
           <CartCard />
         </li>
         <li>
-          <Button >Lihat Semua</Button>
+          <Button>Lihat Semua</Button>
         </li>
       </ul>
     </a>
   );
 };
-
 
 function CartCard() {
   return (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 import { getUser } from "../service/getUser.service";
 
 function Account() {
@@ -12,7 +12,7 @@ function Account() {
   return (
     <div>
       <p>Hello {profile.name}</p>
-      <img src={profile.profile_pic} className="rounded-full w-20"/>
+      <img src={profile.profile_pic} className="rounded-full w-20" />
     </div>
   );
 }

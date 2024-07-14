@@ -1,10 +1,7 @@
 import { CiUser } from "react-icons/ci";
 import { MdAlternateEmail } from "react-icons/md";
 import Button from "../components/Button";
-import { useEffect } from "react";
 function Layanan() {
-
-  
   const dataLayanan = [
     {
       src: "/layanan/1.png",
@@ -56,9 +53,7 @@ function Layanan() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div
-          className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center lg:flex-row"
-        >
+        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center lg:flex-row">
           <div className="flex flex-col gap-4 justify-center items-center lg:flex-1 box-border lg:m-6 lg:items-start">
             <h2 className="text-3xl font-bold w-fit md:text-3xl">
               Layanan Kami

@@ -1,9 +1,5 @@
-import React from 'react'
-
-function Testing() {
-  return (
-    <div>Testing</div>
-  )
+function Testing({ handrelClick }) {
+  return <div onClick={handrelClick}>Testing</div>;
 }
 
-export default Testing
+export default Testing;

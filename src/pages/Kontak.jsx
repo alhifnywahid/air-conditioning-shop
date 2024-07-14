@@ -1,7 +1,6 @@
-import Button from "../components/Button";
-import { FaRegUser } from "react-icons/fa";
-import { FaPhoneSquareAlt } from "react-icons/fa";
+import { FaPhoneSquareAlt, FaRegUser } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
+import Button from "../components/Button";
 function Kontak() {
   const listContact = [
     {
@@ -70,11 +69,7 @@ function Kontak() {
             </div>
           </div>
           <div className="md:flex-1">
-            <img
-              loading="lazy"
-              src="/kontak-banner.png"
-              className="w-full"
-            />
+            <img loading="lazy" src="/kontak-banner.png" className="w-full" />
           </div>
         </div>
       </section>
@@ -127,8 +122,7 @@ function Kontak() {
               marginHeight="0"
               marginWidth="0"
               src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Jl.%20Kihajar%20Dewantoro%20No.64,%20RT.003/RW.003,%20Gondrong,%20Kec.%20Cipondoh,%20Kota%20Tangerang,%20Banten%2015146+(Berkah%20Teknik)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-            >
-            </iframe>
+            ></iframe>
           </div>
         </div>
       </section>

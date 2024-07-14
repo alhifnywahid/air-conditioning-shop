@@ -2,9 +2,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FiDelete } from "react-icons/fi";
 import { IoSearch } from "react-icons/io5";
-import Button from "./Button";
-import { searchProducts } from "../service/searchproducts.services";
 import { SearchContext } from "../context/SearchContext";
+import Button from "./Button";
 
 function SearchProduct() {
   const { setSearchQuery } = useContext(SearchContext);
@@ -23,9 +22,7 @@ function SearchProduct() {
     }
   }, []);
 
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     const handleMouseDown = (event) => {
@@ -110,8 +107,8 @@ const SearchModal = (props) => {
   const handlerSetInput = (e) => {
     setSearch(e.target.value);
     setDisabled(false);
-  }
-  
+  };
+
   return (
     <div
       id="search-modal"

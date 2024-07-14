@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { SearchContext } from "../context/SearchContext";
-import { searchProducts } from "../service/searchproducts.services";
-import { products } from "../service/products.services";
 import { BiFileFind } from "react-icons/bi";
-import SkeletonProducts from "./SkeletonProducts";
+import { SearchContext } from "../context/SearchContext";
+import { products } from "../service/products.services";
+import { searchProducts } from "../service/searchproducts.services";
 import CardProduct from "./CardProduct";
 import Pagination from "./Pagination";
+import SkeletonProducts from "./SkeletonProducts";
 
 function ListProducts({ productClick }) {
   const [listProducts, setListProducts] = useState([]);

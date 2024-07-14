@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import { IoHomeOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import CartIcon from "./CartIcon";
+import { Link, useLocation } from "react-router-dom";
 import AccountIcon from "./AccountIcon";
+import CartIcon from "./CartIcon";
 
 export default function Header() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   return (
     <>
       <div className="shadow w-full sticky top-0 z-10 bg-base-100">
