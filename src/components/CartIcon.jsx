@@ -1,32 +1,45 @@
 import { BsMinecartLoaded } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 const CartIcon = () => {
   return (
-    <a
-      className="group btn btn-ghost flex justify-center dropdown dropdown-bottom dropdown-end dropdown-hover indicator"
-      href="#"
-    >
-      <span className="indicator-item badge badge-primary rounded-full left-4 top-2">
-        2
-      </span>
-      <BsMinecartLoaded size="25" />
-      <span className="hidden group-hover:block w-full h-full absolute -bottom-10"></span>
-      <ul className="mt-5 dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-80 gap-3">
-        <li>
-          <CartCard />
-        </li>
-        <li>
-          <CartCard />
-        </li>
-        <li>
-          <CartCard />
-        </li>
-        <li>
-          <Button>Lihat Semua</Button>
-        </li>
-      </ul>
-    </a>
+    <>
+      <Link
+        to="/keranjang"
+        className="btn btn-ghost indicator lg:hidden flex h-fit gap-1 flex-col"
+      >
+        <span className="indicator-item badge badge-primary rounded-full left-11 p-1 top-2">
+          2
+        </span>
+        <BsMinecartLoaded size="25" />
+        Keranjang
+      </Link>
+      <Link
+        className="group btn btn-ghost justify-center dropdown dropdown-bottom dropdown-end dropdown-hover indicator gap-1 hidden lg:inline-flex"
+        to="/keranjang"
+      >
+        <span className="indicator-item p-1 badge badge-primary rounded-full left-5 top-3">
+          2
+        </span>
+        <BsMinecartLoaded size="25" />
+        <span className="hidden group-hover:block w-full h-full absolute -bottom-10"></span>
+        <ul className="mt-5 dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-80 gap-3">
+          <li>
+            <CartCard />
+          </li>
+          <li>
+            <CartCard />
+          </li>
+          <li>
+            <CartCard />
+          </li>
+          <li>
+            <Button>Lihat Semua</Button>
+          </li>
+        </ul>
+      </Link>
+    </>
   );
 };
 

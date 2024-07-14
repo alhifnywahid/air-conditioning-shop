@@ -33,11 +33,6 @@ function Auth() {
   const location = useLocation();
 
   useEffect(() => {
-    const path = location.pathname.includes("masuk") ? "Masuk" : "Daftar";
-    document.title = path + " - Berkah Teknik";
-  }, [location]);
-
-  useEffect(() => {
     const newImages = [];
     const allImage = async () => {
       newImages.push(await getImages("landscape", 1));
@@ -201,6 +196,10 @@ const LoginForm = (props) => {
     localStorage.setItem("token", res.result);
   };
 
+  const testing = () => {
+    console.log(location);
+  };
+
   return (
     <>
       <h1 className="text-4xl font-bold w-full my-10 text-center">
@@ -258,6 +257,7 @@ const LoginForm = (props) => {
           <FaFacebook size={25} color="#3b82f6" />
           Masuk dengan Facebook
         </Link>
+        <Button onClick={testing}>TESTING</Button>
         <div className="my-5 w-fit mx-auto">
           Belum punya akun?{" "}
           <Link onClick={restartForm} to="/daftar" className="text-blue-400">

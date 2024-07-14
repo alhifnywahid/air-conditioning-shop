@@ -13,7 +13,8 @@ import {
   NotFound,
   Testing,
 } from "../pages";
-import AuthProtected from "./AuthProtected";
+import Cart from "../pages/Cart";
+import Protected from "./Protected";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,11 +45,19 @@ const router = createBrowserRouter([
         element: <Kontak />,
       },
       {
+        path: "keranjang",
+        element: (
+          <Protected>
+            <Cart />
+          </Protected>
+        ),
+      },
+      {
         path: "akun",
         element: (
-          <AuthProtected>
+          <Protected>
             <Account />
-          </AuthProtected>
+          </Protected>
         ),
       },
     ],
