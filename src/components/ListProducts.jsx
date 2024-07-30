@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BiFileFind } from "react-icons/bi";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../context/SearchProvider";
 import { products } from "../service/products.services";
 import { searchProducts } from "../service/searchproducts.services";
 import CardProduct from "./CardProduct";

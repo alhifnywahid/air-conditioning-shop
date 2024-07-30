@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FiDelete } from "react-icons/fi";
 import { IoSearch } from "react-icons/io5";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../context/SearchProvider";
 import Button from "./Button";
 
 function SearchProduct() {

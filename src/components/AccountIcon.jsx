@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const AccountIcon = () => {
   return (
     <>
-      <Link className="btn btn-ghost hidden lg:inline-flex" to="/akun">
+      <Link className="btn btn-ghost hidden md:inline-flex" to="/akun">
         <VscAccount size="25" />
       </Link>
       <Link
-        className="btn btn-ghost flex flex-col gap-1 h-fit lg:hidden"
+        className="btn btn-ghost flex flex-col gap-1 h-fit md:hidden"
         to="/akun"
       >
         <VscAccount size="25" />

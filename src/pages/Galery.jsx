@@ -13,22 +13,6 @@ function Galery() {
   const [isLoading, setIsLoading] = useState(false);
   let sliderRef = useRef(null);
 
-  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setWindowWidth(window.innerWidth);
-  //     console.log(window.innerWidth);
-  //   };
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   // Cleanup event listener on component unmount
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, []);
-
   useEffect(() => {
     getImages("panoramic", 1).then((images) => setImageHeader(images));
     getImages("square", 1).then((images) => setImgBody(images));

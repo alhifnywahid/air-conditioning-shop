@@ -77,7 +77,7 @@ function Layanan() {
             <img
               loading="lazy"
               className="md:w-[85%] mx-auto lg:w-full"
-              src="/public/banner.png"
+              src="/banner.png"
             />
           </div>
         </div>

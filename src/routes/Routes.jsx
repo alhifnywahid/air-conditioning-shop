@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { CartProvider } from "../context/CartProvider";
 import Layout from "../layouts/Layout";
 import {
   Account,
@@ -14,6 +15,10 @@ import {
   Testing,
 } from "../pages";
 import Cart from "../pages/Cart";
+import Checkout from "../pages/Checkout";
+import Akun from "../pages/OutletAkun/Akun";
+import Alamat from "../pages/OutletAkun/Alamat";
+import Pesanan from "../pages/OutletAkun/Pesanan";
 import Protected from "./Protected";
 const router = createBrowserRouter([
   {
@@ -59,7 +64,33 @@ const router = createBrowserRouter([
             <Account />
           </Protected>
         ),
+        children: [
+          {
+            index: true,
+            element: <Akun />,
+          },
+          {
+            path: "pesanan",
+            element: <Pesanan />,
+          },
+          {
+            path: "alamat",
+            element: <Alamat />,
+          },
+          {
+            path: "keluar",
+            element: <div>KELUAR</div>,
+          },
+        ],
       },
+      {
+        path: "checkout/*",
+        element: (
+          <Protected>
+            <Checkout />
+          </Protected>
+        ),
+      }
     ],
   },
   {
@@ -85,7 +116,11 @@ const router = createBrowserRouter([
 ]);
 
 const Routes = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  );
 };
 
 export default Routes;

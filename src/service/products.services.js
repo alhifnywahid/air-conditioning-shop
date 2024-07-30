@@ -1,6 +1,6 @@
-import axios from "axios";
+import api from "../api";
 
 export async function products(page, limit) {
-	const products = await axios.get(import.meta.env.VITE_BASE_URL + `/products?page=${page}&limit=${limit}`);
-	return products.data.result;
+  const products = await api.get(`/products?page=${page}&limit=${limit}`);
+  return products.data.result;
 }

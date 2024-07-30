@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsCartPlusFill } from "react-icons/bs";
 import {
   FaFacebookSquare,
   FaInstagramSquare,
+  FaRegCheckCircle,
   FaWhatsappSquare,
 } from "react-icons/fa";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { Button, CardProduct, SkeletonProducts } from "../components";
+import Spinner from "../components/Spinner";
+import { CartContext } from "../context/CartProvider";
+import { addToCart } from "../service/cartUser";
 import { product } from "../service/product.services";
 import { searchProducts } from "../service/searchproducts.services";
 import { formatIDR } from "../utils/Function";
@@ -26,7 +31,7 @@ function DetailProduct() {
   };
 
   const getProductsRecommend = async (product) => {
-    const response = await searchProducts(product.brand);
+    const response = await searchProducts(product.brand.split(" ")[0]);
     setProductsRecommend(response.products);
   };
 
@@ -130,7 +135,8 @@ const ImagePriview = ({ imgActive, productsRec }) => {
     <div className="skeleton w-full aspect-[4/3] rounded-lg mx-auto"></div>
   );
 };
-const ListImages = ({ images, imgActive, setImgActive, productsRec }) => {
+const ListImages = (props) => {
+  const { images, imgActive, setImgActive, productsRec } = props;
   return (
     <div className="flex gap-2 overflow-x-scroll md:flex-col md:overflow-auto lg:flex-row lg:overflow-x-scroll">
       {productsRec.length != 0
@@ -165,7 +171,7 @@ const TableDescription = ({ productsRec, products }) => {
                 <td>:</td>
                 <td className="w-full">{desc[1]}</td>
               </tr>
-            )
+            ),
         )}
       </tbody>
     </table>
@@ -201,7 +207,42 @@ const ProductsRecommend = ({ productsRec }) => {
     </section>
   );
 };
-const TitlePrduct = ({ product, productsRec }) => {
+const TitlePrduct = (props) => {
+  const navigate = useNavigate();
+  const icon = [
+    <BsCartPlusFill key={0} size={20} />,
+    <FaRegCheckCircle key={0} size={20} />,
+  ];
+  const { product, productsRec } = props;
+  const { productId } = useParams();
+  const { cart, setChange, load, setLoad, setUpdateUser } =
+    useContext(CartContext);
+  const [inner, setInner] = useState(icon[0]);
+
+  const buttonValidation = () => {
+    const token = localStorage.getItem("token");
+    return token ? true : false;
+  };
+  const handlreToCart = () => {
+    if (!buttonValidation()) return navigate("/masuk");
+    const isTrue = cart.some((i) => i.productId == productId);
+    if (isTrue) return toast.warning("Produk sudah ada di keranjang");
+    setLoad(true);
+    addToCart(localStorage.getItem("token"), productId).then(() => {
+      setChange((prev) => !prev);
+      setInner(icon[1]);
+      setTimeout(() => setInner(icon[0]), 1000);
+    });
+  };
+  const handlerBuy = () => {
+    if (!buttonValidation()) return navigate("/masuk");
+    addToCart(localStorage.getItem("token"), productId).then(() => {
+      setChange((prev) => !prev);
+      setUpdateUser((prev) => !prev);
+    });
+    navigate(`/checkout/${productId}`);
+  };
+
   return (
     <div className="flex flex-col gap-2">
       {productsRec.length != 0 ? (
@@ -209,11 +250,18 @@ const TitlePrduct = ({ product, productsRec }) => {
           <h1 className="text-xl font-bold">{product.title}</h1>
           <p className="text-lg font-bold">{formatIDR(product.price)}</p>
           <div className="flex gap-2 my-4">
-            <Button className="flex-1 md:flex-initial md:w-60">
+            <Button
+              className="flex-1 md:flex-initial md:w-60"
+              onClick={handlerBuy}
+            >
               Beli Sekarang
             </Button>
-            <Button className="flex-1 md:flex-initial md:w-60">
-              <BsCartPlusFill size={20} />
+            <Button
+              disabled={!load}
+              className="flex-1 md:flex-initial md:w-60"
+              onClick={handlreToCart}
+            >
+              {!load ? <Spinner size="md" /> : inner}
             </Button>
           </div>
         </>

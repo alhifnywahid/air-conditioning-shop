@@ -1,11 +1,11 @@
-import axios from "axios";
+import api from "../api";
 
 export async function register(name, email, password) {
-	const result = await axios.post(import.meta.env.VITE_BASE_URL + "/user", {
-		name,
-		email,
-		password,
-	});
-	const data = result.data;
-	return data;
+  const result = await api.post("/user", {
+    name,
+    email,
+    password,
+  });
+  const data = result.data;
+  return data;
 }

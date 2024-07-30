@@ -16,7 +16,7 @@ import {
   SearchProduct,
   SkeletonProducts,
 } from "../components";
-import { SearchContext, SearchProvider } from "../context/SearchContext";
+import { SearchContext, SearchProvider } from "../context/SearchProvider";
 import { product } from "../service/product.services";
 import { products } from "../service/products.services";
 import { searchProducts } from "../service/searchproducts.services";
@@ -433,11 +433,11 @@ const FilterProduct = () => {
               list: category.list.map((item) =>
                 item.title === itemTitle
                   ? { ...item, checked: !item.checked }
-                  : item
+                  : item,
               ),
             }
-          : category
-      )
+          : category,
+      ),
     );
   };
   return (

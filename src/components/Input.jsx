@@ -1,4 +1,12 @@
-function Input({ type, placeholder, value, className, icon, onChange, ...props }) {
+function Input({
+  type,
+  placeholder,
+  value,
+  className,
+  icon,
+  onChange,
+  ...props
+}) {
   return (
     <label className="input input-bordered flex items-center gap-2">
       {icon}
@@ -15,4 +23,3 @@ function Input({ type, placeholder, value, className, icon, onChange, ...props }
 }
 
 export default Input;
-

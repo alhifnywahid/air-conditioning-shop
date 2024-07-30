@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Testing() {
+const Testing = () => {
   return (
     <div>Testing</div>
   )

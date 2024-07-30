@@ -1,5 +1,9 @@
 import { useRef } from "react";
-import { BsFillMenuButtonWideFill, BsMenuButton, BsMenuUp } from "react-icons/bs";
+import {
+  BsFillMenuButtonWideFill,
+  BsMenuButton,
+  BsMenuUp,
+} from "react-icons/bs";
 import { FaRegHandshake } from "react-icons/fa";
 import { GrContactInfo, GrGallery } from "react-icons/gr";
 import { IoMdCloseCircleOutline } from "react-icons/io";
@@ -25,7 +29,11 @@ const NavMobile = () => {
           <IoHomeOutline size="25" />
           Beranda
         </Link>
-        <button onClick={openModal} className="btn btn-ghost flex flex-col gap-1 h-fit" to="#">
+        <button
+          onClick={openModal}
+          className="btn btn-ghost flex flex-col gap-1 h-fit"
+          to="#"
+        >
           <BsFillMenuButtonWideFill size="25" />
           Menu
         </button>

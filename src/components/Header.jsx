@@ -23,7 +23,7 @@ export default function Header() {
               <NavLinks />
             </ul>
           </div>
-          <div className="navbar-end hidden md:flex">
+          <div className="navbar-end hidden md:flex relative">
             <AccountIcon />
             <CartIcon />
           </div>
