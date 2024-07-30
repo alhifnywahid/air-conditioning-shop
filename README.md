@@ -7,6 +7,7 @@ Project ini saya buat untuk tugas frontend di semester 4, dengan tema toko onlin
 - Pencarian
 - Filter
 - Perbandingan Produk
+- Pagination
 - Payment Gateway
 - Keranjang
 - Login & Register
