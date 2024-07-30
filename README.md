@@ -41,13 +41,13 @@ yarn
 
 ```
 ### URL Backend
-VITE_BASE_URL=" http://localhost:3000/api"
+VITE_BASE_URL=""
 
 ### Midtrans Client Key
-VITE_MIDTRANS_CK="SB-Mid-client-oQiS_4KcM6359glu"
+VITE_MIDTRANS_CK=""
 
 ### Midtrans MerchantID
-VITE_MIDTRANS_MI="G437637944"
+VITE_MIDTRANS_MI=""
 ```
 
 - run project
