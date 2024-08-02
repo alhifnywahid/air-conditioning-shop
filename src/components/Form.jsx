@@ -4,7 +4,7 @@ function Form({ action, method, className, children, onSubmit }) {
       onSubmit={onSubmit}
       action={action}
       method={method}
-      className={`w-[75%] sm:w-[500px] xl:w-[80%] flex flex-col gap-3 ${className}`}
+      className={`flex w-[75%] flex-col gap-3 sm:w-[500px] xl:w-[80%] ${className}`}
     >
       {children}
     </form>

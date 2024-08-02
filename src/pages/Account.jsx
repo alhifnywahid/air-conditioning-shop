@@ -53,17 +53,17 @@ function Account() {
     <>
       {profile && (
         <section className="bg-base-200 2xl:py-2">
-          <div className="2xl:container bg-base-100 rounded-xl p-5 flex justify-center mb-2">
-            <h2 className="font-bold text-2xl">Akun Saya</h2>
+          <div className="mb-2 flex justify-center rounded-xl bg-base-100 p-5 2xl:container">
+            <h2 className="text-2xl font-bold">Akun Saya</h2>
           </div>
-          <div className="2xl:container rounded-xl flex flex-col justify-center lg:flex-row gap-2">
-            <div className="flex flex-col gap-2 basis-1/5 p-6 rounded-xl bg-base-100 items-center h-fit sticky top-20">
+          <div className="flex flex-col justify-center gap-2 rounded-xl 2xl:container lg:flex-row">
+            <div className="sticky top-20 flex h-fit basis-1/5 flex-col items-center gap-2 rounded-xl bg-base-100 p-6">
               <div className="avatar">
                 <label
                   htmlFor="profile"
-                  className="group w-24 block cursor-pointer relative rounded-full shadow border  overflow-hidden"
+                  className="group relative block w-24 cursor-pointer overflow-hidden rounded-full border shadow"
                 >
-                  <span className="absolute top-0 right-0 w-full h-full hidden justify-center items-center group-hover:flex backdrop-blur-[1px] text-white">
+                  <span className="absolute right-0 top-0 hidden h-full w-full items-center justify-center text-white backdrop-blur-[1px] group-hover:flex">
                     Ganti
                   </span>
                   <input
@@ -74,15 +74,15 @@ function Account() {
                   />
                   <img
                     src={file || profile.profile_pic}
-                    className="rounded-full w-full aspect-square object-contain"
+                    className="aspect-square w-full rounded-full object-contain"
                   />
                 </label>
               </div>
-              <h2 className="font-bold w-full text-center text-xl">
+              <h2 className="w-full text-center text-xl font-bold">
                 {profile.name}
               </h2>
               <span className="divider m-0"></span>
-              <ul className="w-full flex flex-col gap-1">
+              <ul className="flex w-full flex-col gap-1">
                 {links.map((item, i) => (
                   <Fragment key={i}>
                     <li>
@@ -108,8 +108,8 @@ function Account() {
           </div>
           <dialog ref={refModal} className="modal">
             <div className="modal-box">
-              <h3 className="font-bold text-lg w-full text-center">Pesan</h3>
-              <p className="py-4 w-full text-center my-6">
+              <h3 className="w-full text-center text-lg font-bold">Pesan</h3>
+              <p className="my-6 w-full py-4 text-center">
                 Apakah anda yakin ingin keluar?
               </p>
               <div className="grid grid-cols-2 gap-2">

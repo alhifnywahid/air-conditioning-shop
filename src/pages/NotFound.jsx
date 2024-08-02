@@ -9,7 +9,7 @@ function NotFound() {
   return (
     <>
       <div>Halaman yang ada cari tidak ada!</div>
-      <Link to="/" className="btn bg-blue-500 hover:bg-blue-600 text-white">
+      <Link to="/" className="btn bg-blue-500 text-white hover:bg-blue-600">
         Kembali ke halaman awal.
       </Link>
     </>

@@ -1,6 +1,6 @@
 function ForgetAccount() {
   return (
-    <div className="h-screen w-screen flex justify-center items-center"></div>
+    <div className="flex h-screen w-screen items-center justify-center"></div>
   );
 }
 

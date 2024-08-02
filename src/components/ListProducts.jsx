@@ -40,14 +40,14 @@ function ListProducts({ productClick }) {
   return (
     <section className="bg-base-200 pb-2">
       <div
-        className={`2xl:container bg-base-100 rounded-xl p-5 grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 relative ${
+        className={`relative grid grid-cols-2 gap-3 rounded-xl bg-base-100 p-5 2xl:container sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ${
           listProducts === null || (listProducts.length === 0 && "p-20")
         }`}
       >
         {listProducts === null && (
-          <div className="w-full p-10 flex justify-center items-center col-span-full flex-col">
+          <div className="col-span-full flex w-full flex-col items-center justify-center p-10">
             <BiFileFind size={150} />
-            <h2 className="font-bold text-xl">Produk tidak di temukan!</h2>
+            <h2 className="text-xl font-bold">Produk tidak di temukan!</h2>
           </div>
         )}
 
@@ -61,7 +61,7 @@ function ListProducts({ productClick }) {
             <CardProduct key={index} item={item} productClick={productClick} />
           ))}
         <div
-          className={`mt-5 flex justify-center items-center w-full col-span-full flex-col ${
+          className={`col-span-full mt-5 flex w-full flex-col items-center justify-center ${
             listProducts === null && "hidden"
           }`}
         >

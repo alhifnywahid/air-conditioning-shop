@@ -61,25 +61,25 @@ function Home() {
     <SearchProvider>
       <section className="bg-base-200 2xl:py-2">
         <div className="hero w-full 2xl:container">
-          <div className="hero-content flex-col justify-between items-center lg:flex-row-reverse min-w-full relative 2xl:rounded-xl overflow-hidden p-0">
-            <img src="/2.avif" className="w-full hidden lg:block" />
+          <div className="hero-content relative min-w-full flex-col items-center justify-between overflow-hidden p-0 lg:flex-row-reverse 2xl:rounded-xl">
+            <img src="/2.avif" className="hidden w-full lg:block" />
             <img src="/mobile.avif" className="w-full lg:hidden" />
-            <div className="absolute grid grid-cols-1 lg:grid-cols-2 m-5">
+            <div className="absolute m-5 grid grid-cols-1 lg:grid-cols-2">
               <div className="lg:pl-10 lg:pr-36">
-                <p className="py-6 w-[80%] mx-auto text-center lg:w-full lg:text-left font-bold text-2xl md:text-3xl text-white sm:mt-32 md:mt-24 sm:mb-4 lg:m-0">
+                <p className="mx-auto w-[80%] py-6 text-center text-2xl font-bold text-white sm:mb-4 sm:mt-32 md:mt-24 md:text-3xl lg:m-0 lg:w-full lg:text-left">
                   Menyediakan berbagai layanan berkualitas tinggi terkait dengan
                   sistem pendingin udara (AC) Anda.
                 </p>
-                <div className="flex gap-3 w-fit mx-auto lg:w-full">
+                <div className="mx-auto flex w-fit gap-3 lg:w-full">
                   <Link
                     to="/layanan"
-                    className="btn bg-blue-500 btn-sm md:btn-md hover:bg-blue-600 text-white border-none rounded md:rounded-md md:text-lg"
+                    className="btn btn-sm rounded border-none bg-blue-500 text-white md:btn-md hover:bg-blue-600 md:rounded-md md:text-lg"
                   >
                     Layanan
                   </Link>
                   <Link
                     to="/kontak"
-                    className="btn bg-blue-500 btn-sm md:btn-md hover:bg-blue-600 text-white border-none rounded md:rounded-md md:text-lg"
+                    className="btn btn-sm rounded border-none bg-blue-500 text-white md:btn-md hover:bg-blue-600 md:rounded-md md:text-lg"
                   >
                     Hubungi Kami
                   </Link>
@@ -91,16 +91,16 @@ function Home() {
       </section>
 
       <section className="bg-base-200">
-        <div className="2xl:container bg-base-100 rounded-xl p-10 flex flex-col gap-6">
-          <h1 className="text-center text-xl md:text-2xl font-bold text-slate-800">
+        <div className="flex flex-col gap-6 rounded-xl bg-base-100 p-10 2xl:container">
+          <h1 className="text-center text-xl font-bold text-slate-800 md:text-2xl">
             Temukan berbagai macam Air Conditioner dengan merk terbaik hanya di
             sini!
           </h1>
-          <div className="grid grid-cols-2 md:grid-cols-5 w-fit gap-2 mx-auto">
+          <div className="mx-auto grid w-fit grid-cols-2 gap-2 md:grid-cols-5">
             {[...Array(10)].map((_, i) => (
               <img
                 key={i + 1}
-                className="rounded-md shadow border w-44"
+                className="w-44 rounded-md border shadow"
                 src={`/brand/${i + 1}.png`}
               />
             ))}
@@ -109,7 +109,7 @@ function Home() {
       </section>
 
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 rounded-xl p-5 grid grid-cols-2 gap-2 md:flex">
+        <div className="grid grid-cols-2 gap-2 rounded-xl bg-base-100 p-5 2xl:container md:flex">
           <FilterProduct />
           <ComparisonProduct
             setShowModal={setIsComparation}
@@ -170,9 +170,9 @@ const ComparisonProduct = (props) => {
       <div
         className={`${
           showModal ? "flex" : "hidden"
-        } fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 z-20 bg-base-100 p-4 sm:rounded-xl shadow border-2 flex-col gap-3`}
+        } fixed bottom-0 right-0 z-20 w-full flex-col gap-3 border-2 bg-base-100 p-4 shadow sm:bottom-4 sm:right-4 sm:w-auto sm:rounded-xl`}
       >
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Bandingkan Produk</h1>
           <Button
             className="btn-circle btn-sm bg-red-500 hover:bg-red-700"
@@ -184,17 +184,17 @@ const ComparisonProduct = (props) => {
           </Button>
         </div>
         <span>Pilih maksimum 3 produk untuk di bandingkan</span>
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <ItemComparation
             handlerDeItem={() => handlerDeItem(0)}
             listItem={listItem[0].src}
           />
-          <span className="font-bold mx-4">+</span>
+          <span className="mx-4 font-bold">+</span>
           <ItemComparation
             handlerDeItem={() => handlerDeItem(1)}
             listItem={listItem[1].src}
           />
-          <span className="font-bold mx-4">+</span>
+          <span className="mx-4 font-bold">+</span>
           <ItemComparation
             handlerDeItem={() => handlerDeItem(2)}
             listItem={listItem[2].src}
@@ -205,13 +205,13 @@ const ComparisonProduct = (props) => {
 
       <dialog id="start-comparation" className="modal backdrop-blur-sm">
         {loader && (
-          <div className="flex justify-center items-center min-h-full min-w-full">
+          <div className="flex min-h-full min-w-full items-center justify-center">
             <span className="loading loading-spinner w-20"></span>
           </div>
         )}
 
         {!loader && (
-          <div className="modal-box min-h-screen min-w-full rounded-none lg:min-w-fit lg:min-h-[85%] lg:rounded-md">
+          <div className="modal-box min-h-screen min-w-full rounded-none lg:min-h-[85%] lg:min-w-fit lg:rounded-md">
             <div className="overflow-x-auto p-2">
               <table className="table lg:w-fit">
                 <thead>
@@ -220,9 +220,9 @@ const ComparisonProduct = (props) => {
                     {dataComparation.map((item, index) => (
                       <th
                         key={index}
-                        className="aspect-square w-40 h-w-40 lg:w-60"
+                        className="h-w-40 aspect-square w-40 lg:w-60"
                       >
-                        <img src={item.image[0]} className="shadow border-2" />
+                        <img src={item.image[0]} className="border-2 shadow" />
                       </th>
                     ))}
                   </tr>
@@ -306,10 +306,10 @@ const Tbody = ({ data }) => {
 
 const ItemComparation = ({ listItem, handlerDeItem }) => {
   return (
-    <div className="group avatar w-full h-full aspect-square">
-      <div className="sm:w-32 rounded shadow border-2 overflow-hidden">
+    <div className="group avatar aspect-square h-full w-full">
+      <div className="overflow-hidden rounded border-2 shadow sm:w-32">
         <button
-          className={`hidden btn-error btn-sm ${
+          className={`btn-error btn-sm hidden ${
             listItem && "group-hover:block"
           } btn absolute bottom-0 left-0 w-full rounded`}
           value={listItem}
@@ -321,7 +321,7 @@ const ItemComparation = ({ listItem, handlerDeItem }) => {
         {listItem ? (
           <img src={listItem} />
         ) : (
-          <span className="flex justify-center items-center w-full h-full">
+          <span className="flex h-full w-full items-center justify-center">
             <CiSquarePlus size={30} />
           </span>
         )}
@@ -451,23 +451,23 @@ const FilterProduct = () => {
       </Button>
       <dialog id="my_modal_5" className="modal modal-middle">
         <div className="modal-box">
-          <div className="flex justify-between items-center">
-            <h3 className="font-bold text-2xl">Semua Filter</h3>
+          <div className="flex items-center justify-between">
+            <h3 className="text-2xl font-bold">Semua Filter</h3>
             <form method="dialog">
-              <button className="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white p-1 rounded-full">
+              <button className="rounded-full bg-red-500 p-1 text-white hover:bg-red-600 active:bg-red-700">
                 <IoClose size={25} />
               </button>
             </form>
           </div>
-          <div className="py-4 h-60 overflow-y-scroll overflow-x-hidden flex flex-col gap-4">
+          <div className="flex h-60 flex-col gap-4 overflow-x-hidden overflow-y-scroll py-4">
             {cx.map((category, index) => (
               <div key={index + category.title}>
                 <h3 className="font-bold">{category.title}</h3>
-                <ul className="flex gap-2 my-2 flex-wrap">
+                <ul className="my-2 flex flex-wrap gap-2">
                   {category.list.map((item) => (
                     <li key={item.id || item.title}>
                       <label
-                        className={`rounded font-normal text-sm border shadow-md cursor-pointer p-1 ${
+                        className={`cursor-pointer rounded border p-1 text-sm font-normal shadow-md ${
                           item.checked && "bg-green-300 text-white"
                         }`}
                         htmlFor={item.title}
@@ -489,7 +489,7 @@ const FilterProduct = () => {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-2 mt-4">
+          <div className="mt-4 grid grid-cols-2 gap-2">
             <Button onClick={handlerReset}>Reset</Button>
             <form method="dialog">
               <Button className="w-full">Tampilkan</Button>
@@ -534,14 +534,14 @@ const ListProducts = ({ productClick }) => {
   return (
     <section className="bg-base-200 pb-2">
       <div
-        className={`2xl:container bg-base-100 rounded-xl p-5 grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 relative ${
+        className={`relative grid grid-cols-2 gap-3 rounded-xl bg-base-100 p-5 2xl:container sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 ${
           listProducts === null || (listProducts.length === 0 && "p-20")
         }`}
       >
         {listProducts === null && (
-          <div className="w-full p-10 flex justify-center items-center col-span-full flex-col">
+          <div className="col-span-full flex w-full flex-col items-center justify-center p-10">
             <BiFileFind size={150} />
-            <h2 className="font-bold text-xl">Produk tidak di temukan!</h2>
+            <h2 className="text-xl font-bold">Produk tidak di temukan!</h2>
           </div>
         )}
 
@@ -555,7 +555,7 @@ const ListProducts = ({ productClick }) => {
             <CardProduct key={index} item={item} onClick={productClick} />
           ))}
         <div
-          className={`mt-5 flex justify-center items-center w-full col-span-full flex-col ${
+          className={`col-span-full mt-5 flex w-full flex-col items-center justify-center ${
             listProducts === null && "hidden"
           }`}
         >

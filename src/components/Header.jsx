@@ -11,8 +11,8 @@ export default function Header() {
   }, [location.pathname]);
   return (
     <>
-      <div className="shadow w-full sticky top-0 z-10 bg-base-100">
-        <div className="navbar 2xl:container rounded-md">
+      <div className="sticky top-0 z-10 w-full bg-base-100 shadow">
+        <div className="navbar rounded-md 2xl:container">
           <div className="navbar-start">
             <Link to="/" className="btn btn-ghost text-xl sm:text-2xl">
               Berkah Teknik
@@ -23,7 +23,7 @@ export default function Header() {
               <NavLinks />
             </ul>
           </div>
-          <div className="navbar-end hidden md:flex relative">
+          <div className="navbar-end relative hidden md:flex">
             <AccountIcon />
             <CartIcon />
           </div>
@@ -66,7 +66,7 @@ const NavLinks = () => {
       {navLink.map((link, index) => (
         <li key={index}>
           <Link className="flex flex-col" to={link.path}>
-            <span className="md:hidden pointer-events-none">{link.icon}</span>
+            <span className="pointer-events-none md:hidden">{link.icon}</span>
             <span className="pointer-events-none">{link.title}</span>
           </Link>
         </li>

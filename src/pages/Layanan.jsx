@@ -53,12 +53,12 @@ function Layanan() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center lg:flex-row">
-          <div className="flex flex-col gap-4 justify-center items-center lg:flex-1 box-border lg:m-6 lg:items-start">
-            <h2 className="text-3xl font-bold w-fit md:text-3xl">
+        <div className="flex flex-col-reverse items-center justify-center rounded-xl bg-base-100 p-5 2xl:container lg:flex-row">
+          <div className="box-border flex flex-col items-center justify-center gap-4 lg:m-6 lg:flex-1 lg:items-start">
+            <h2 className="w-fit text-3xl font-bold md:text-3xl">
               Layanan Kami
             </h2>
-            <p className="w-fit text-center lg:text-left xl:text-xl xs:w-[90%] sm:w-[70%] lg:w-[85%]">
+            <p className="w-fit text-center xs:w-[90%] sm:w-[70%] lg:w-[85%] lg:text-left xl:text-xl">
               Kami dengan bangga menyediakan berbagai layanan berkualitas tinggi
               terkait dengan sistem pendingin udara (AC) Anda. Dengan pengalaman
               bertahun-tahun dalam industri ini, kami telah menjadi tujuan utama
@@ -76,26 +76,26 @@ function Layanan() {
           <div className="md:flex-1">
             <img
               loading="lazy"
-              className="md:w-[85%] mx-auto lg:w-full"
+              className="mx-auto md:w-[85%] lg:w-full"
               src="/banner.png"
             />
           </div>
         </div>
       </section>
       <section className="bg-base-200 2xl:pb-2">
-        <div className="2xl:container xl:bg-base-100 p-5 rounded-xl grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 rounded-xl p-5 2xl:container xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:bg-base-100">
           {dataLayanan.map((item, index) => (
             <div
               key={index}
-              className="shadow-custom-1 border overflow-hidden rounded-md flex flex-col hover:shadow-blue-100 hover:shadow-xl"
+              className="flex flex-col overflow-hidden rounded-md border shadow-custom-1 hover:shadow-xl hover:shadow-blue-100"
             >
               <img
                 loading="lazy"
-                className="aspect-[3/2] object-cover pt-4 px-4 xs:p-0"
+                className="aspect-[3/2] object-cover px-4 pt-4 xs:p-0"
                 src={item.src}
               />
-              <div className="flex flex-col gap-2 p-4 justify-center">
-                <h3 className="text-xl font-semibold line-clamp-1">
+              <div className="flex flex-col justify-center gap-2 p-4">
+                <h3 className="line-clamp-1 text-xl font-semibold">
                   {item.title}
                 </h3>
                 <p className="line-clamp-5">{item.desc}</p>
@@ -106,10 +106,10 @@ function Layanan() {
         <dialog id="modal_layanan" className="modal">
           <div className="modal-box">
             <div>
-              <h1 className="font-bold text-2xl m-4 text-center">
+              <h1 className="m-4 text-center text-2xl font-bold">
                 Pesan layanan kami
               </h1>
-              <form className=" flex flex-col gap-4">
+              <form className="flex flex-col gap-4">
                 <label className="input input-bordered flex items-center gap-2">
                   <CiUser />
                   <input

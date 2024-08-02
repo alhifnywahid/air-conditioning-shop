@@ -63,30 +63,30 @@ function AuthLayout() {
 
   return (
     <section>
-      <div className="w-full h-screen grid grid-cols-1 justify-center items-center xl:grid-cols-3">
-        <div className="outlin flex flex-col justify-center items-center ">
+      <div className="grid h-screen w-full grid-cols-1 items-center justify-center xl:grid-cols-3">
+        <div className="outlin flex flex-col items-center justify-center">
           {images.length <= 0 && (
-            <Form className="w-[75%] sm:w-[500px] xl:w-[80%] flex flex-col gap-3">
-              <span className="min-h-12 skeleton my-10 rounded"></span>
-              <span className="min-h-12 skeleton rounded"></span>
-              <span className="min-h-12 skeleton rounded"></span>
-              <span className="min-h-4 skeleton rounded"></span>
-              <span className="min-h-12 skeleton rounded"></span>
-              <span className="min-h-4 my-4 skeleton rounded"></span>
-              <span className="min-h-12 skeleton rounded"></span>
-              <span className="min-h-12 skeleton rounded"></span>
+            <Form className="flex w-[75%] flex-col gap-3 sm:w-[500px] xl:w-[80%]">
+              <span className="skeleton my-10 min-h-12 rounded"></span>
+              <span className="skeleton min-h-12 rounded"></span>
+              <span className="skeleton min-h-12 rounded"></span>
+              <span className="skeleton min-h-4 rounded"></span>
+              <span className="skeleton min-h-12 rounded"></span>
+              <span className="skeleton my-4 min-h-4 rounded"></span>
+              <span className="skeleton min-h-12 rounded"></span>
+              <span className="skeleton min-h-12 rounded"></span>
             </Form>
           )}
           {images.length > 0 && (
             <>
-              <h1 className="text-4xl font-bold w-full my-10 text-center">
+              <h1 className="my-10 w-full text-center text-4xl font-bold">
                 Selamat Datang
               </h1>
               <Form
                 onSubmit={(e) => handleAuth(e)}
                 action=""
                 method="post"
-                className="w-[75%] sm:w-[500px] xl:w-[80%] flex flex-col gap-3"
+                className="flex w-[75%] flex-col gap-3 sm:w-[500px] xl:w-[80%]"
               >
                 <Input
                   type="email"
@@ -101,7 +101,7 @@ function AuthLayout() {
                 <span
                   className={`${
                     wEmail ? "block" : "hidden"
-                  } w-full text-sm text-red-600 -mt-2`}
+                  } -mt-2 w-full text-sm text-red-600`}
                 >
                   Email tidak terdaftar! silahkah daftar terlebih dahulu
                 </span>
@@ -118,12 +118,12 @@ function AuthLayout() {
                 <span
                   className={`${
                     wPassword ? "block" : "hidden"
-                  } w-full text-sm text-red-600 -mt-2`}
+                  } -mt-2 w-full text-sm text-red-600`}
                 >
                   Password Salah!
                 </span>
-                <span className="w-full text-sm flex justify-end">
-                  <Link to="/ganti-akun" className="w-fit h-fit text-blue-400">
+                <span className="flex w-full justify-end text-sm">
+                  <Link to="/ganti-akun" className="h-fit w-fit text-blue-400">
                     Lupa kata sandi?
                   </Link>
                 </span>
@@ -139,7 +139,7 @@ function AuthLayout() {
                   <FcGoogle size={25} />
                   Masuk dengan Google
                 </Link>
-                <Link to="/google" className="btn ">
+                <Link to="/google" className="btn">
                   <FaFacebook size={25} color="#3b82f6" />
                   Masuk dengan Facebook
                 </Link>
@@ -148,15 +148,15 @@ function AuthLayout() {
           )}
         </div>
 
-        <div className="hidden xl:grid grid-cols-4 grid-rows-4 gap-1 w-full h-screen col-span-2">
+        <div className="col-span-2 hidden h-screen w-full grid-cols-4 grid-rows-4 gap-1 xl:grid">
           {[...Array(7)].map((_, i) => (
             <FadeCarousel
               key={i}
               grayscale={grayscale}
               images={images}
               imgIndex={i}
-              className={`${i == 0 && "row-span-2 col-span-3"} ${
-                i == 4 && "row-span-2 col-span-2"
+              className={`${i == 0 && "col-span-3 row-span-2"} ${
+                i == 4 && "col-span-2 row-span-2"
               } ${i == 5 && "row-span-2"}`}
             />
           ))}
@@ -175,7 +175,7 @@ const FadeCarousel = ({
   const isImages = images.length === 0;
   return (
     <CrossfadeCarousel
-      className={`grayscale hover:grayscale-0 transition-all cursor-pointer rounded ${
+      className={`cursor-pointer rounded grayscale transition-all hover:grayscale-0 ${
         grayscale && "grayscale-0"
       } ${isImages && "skeleton"} ${className}`}
       interval={2000}

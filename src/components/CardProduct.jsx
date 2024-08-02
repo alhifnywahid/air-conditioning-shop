@@ -19,32 +19,32 @@ function CardProduct({ item, ...props }) {
       to={`/product/${item._id}`}
       data-id={item._id}
       data-src={item.image[0]}
-      className={`shadow-custom-1 rounded-xl border hover:shadow-blue-400 transition-all overflow-hidden`}
+      className={`overflow-hidden rounded-xl border shadow-custom-1 transition-all hover:shadow-blue-400`}
     >
-      <div className={`aspect-[1/1] overflow-hidden pointer-events-none`}>
+      <div className={`pointer-events-none aspect-[1/1] overflow-hidden`}>
         <Slider {...settings()}>
           {item.image.map((image) => (
             <div key={`${item.id}`}>
               <img
                 loading="lazy"
                 src={image}
-                className="w-full pointer-events-none"
+                className="pointer-events-none w-full"
               />
             </div>
           ))}
         </Slider>
       </div>
-      <div className="flex flex-col gap-3 pointer-events-none p-4">
-        <h3 className="line-clamp-2 pointer-events-none">{item.title}</h3>
-        <div className="flex gap-2 pointer-events-none">
-          <div className="badge bg-blue-400 text-white rounded flex justify-center pointer-events-none">
+      <div className="pointer-events-none flex flex-col gap-3 p-4">
+        <h3 className="pointer-events-none line-clamp-2">{item.title}</h3>
+        <div className="pointer-events-none flex gap-2">
+          <div className="badge pointer-events-none flex justify-center rounded bg-blue-400 text-white">
             {item.brand.split(" ")[0]}
           </div>
-          <div className="badge bg-blue-400 text-white rounded flex justify-center pointer-events-none">
+          <div className="badge pointer-events-none flex justify-center rounded bg-blue-400 text-white">
             Bekas
           </div>
         </div>
-        <p className="font-bold pointer-events-none">{formatIDR(item.price)}</p>
+        <p className="pointer-events-none font-bold">{formatIDR(item.price)}</p>
       </div>
     </Link>
   );

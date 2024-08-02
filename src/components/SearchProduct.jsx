@@ -59,10 +59,10 @@ function SearchProduct() {
   };
 
   return (
-    <div className="join w-full shadow col-span-3 md:col-span-1 relative">
+    <div className="join relative col-span-3 w-full shadow md:col-span-1">
       <label
         ref={containerRef}
-        className={`join-item input input-bordered flex items-center gap-2 w-full relative`}
+        className={`input join-item input-bordered relative flex w-full items-center gap-2`}
       >
         <input
           id="input-search"
@@ -83,7 +83,7 @@ function SearchProduct() {
       </label>
       <Button
         id="search"
-        className="join-item disabled:bg-blue-300 disabled:text-white font-bold"
+        className="join-item font-bold disabled:bg-blue-300 disabled:text-white"
         disabled={disabled}
         onClick={handleSubmitSearch}
       >
@@ -112,17 +112,17 @@ const SearchModal = (props) => {
   return (
     <div
       id="search-modal"
-      className={`z-10 absolute top-14 left-0 p-3 bg-base-100 shadow rounded-md w-full border ${
+      className={`absolute left-0 top-14 z-10 w-full rounded-md border bg-base-100 p-3 shadow ${
         focus ? "block" : "hidden"
       }`}
     >
       <h1 className="mb-2">Pencarian Terakhir</h1>
       {listSearch.length > 0 ? (
-        <div className="flex flex-col gap-2 w-full">
+        <div className="flex w-full flex-col gap-2">
           {listSearch.map((item, index) => (
             <div key={index} className="flex gap-2 overflow-hidden">
               <button
-                className="join-item btn btn-sm btn-ghost flex justify-start items-center w-full flex-initial gap-2 font-light"
+                className="btn btn-ghost join-item btn-sm flex w-full flex-initial items-center justify-start gap-2 font-light"
                 value={item}
                 onClick={handlerSetInput}
               >
@@ -130,7 +130,7 @@ const SearchModal = (props) => {
                 {item}
               </button>
               <button
-                className="join-item btn btn-sm w-fit hover:bg-red-500 hover:text-white flex-none"
+                className="btn join-item btn-sm w-fit flex-none hover:bg-red-500 hover:text-white"
                 value={item}
                 onClick={handlerItem}
               >

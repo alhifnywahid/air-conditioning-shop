@@ -90,8 +90,8 @@ function Alamat() {
   };
 
   return (
-    <div className="flex flex-col gap-4 basis-4/5 p-6 sticky top-20 rounded-xl bg-base-100">
-      <h2 className="font-bold w-full text-left text-lg">
+    <div className="sticky top-20 flex basis-4/5 flex-col gap-4 rounded-xl bg-base-100 p-6">
+      <h2 className="w-full text-left text-lg font-bold">
         <Button onClick={() => dialogRef.current.showModal()}>
           Tambah Alamat
         </Button>
@@ -112,7 +112,7 @@ function Alamat() {
           ))}
         </div>
       ) : (
-        <div className="w-full flex gap-4 flex-col justify-center items-center h-56">
+        <div className="flex h-56 w-full flex-col items-center justify-center gap-4">
           <h3 className="text-lg">Belum ada alamat.</h3>
           <Button className="">Tambah Alamat</Button>
         </div>
@@ -120,8 +120,8 @@ function Alamat() {
 
       <dialog id="add" ref={dialogRef} className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg w-full">Tambah Alamat</h3>
-          <form onSubmit={submitAddress} className="flex gap-2 flex-col my-4">
+          <h3 className="w-full text-lg font-bold">Tambah Alamat</h3>
+          <form onSubmit={submitAddress} className="my-4 flex flex-col gap-2">
             <Div>
               <TextField title="Nama Alamat" placeholder="Kantor" />
               <TextField title="Nama Penerima" placeholder="C Ronaldo" />
@@ -172,7 +172,7 @@ function Alamat() {
                 placeholder="Jl. Cisarua No. 1..."
               ></textarea>
             </label>
-            <div className="grid grid-cols-2 gap-2 mt-2">
+            <div className="mt-2 grid grid-cols-2 gap-2">
               <Button type="reset" onClick={() => dialogRef.current.close()}>
                 Batal
               </Button>
@@ -227,7 +227,7 @@ const CardAddress = (props) => {
   };
 
   return (
-    <div className="w-80 bg-base-100 p-4 rounded-xl shadow shadow-blue-100">
+    <div className="w-80 rounded-xl bg-base-100 p-4 shadow shadow-blue-100">
       <div className="relative">
         <h1 className="text-lg font-semibold">{data.nama_alamat}</h1>
         <h3>{data.penerima}</h3>
@@ -237,7 +237,7 @@ const CardAddress = (props) => {
           <summary className="btn btn-sm m-1">
             <HiOutlineDotsCircleHorizontal size={20} />
           </summary>
-          <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow w-fit">
+          <ul className="menu dropdown-content z-[1] w-fit rounded-box bg-base-100 p-2 shadow">
             <li>
               <button value={data._id} onClick={handlerDelete}>
                 Hapus
@@ -252,11 +252,11 @@ const CardAddress = (props) => {
       <dialog ref={dialogRef} className="modal">
         {fullAddress.provinsi ? (
           <div className="modal-box">
-            <h3 className="font-bold text-lg w-full">Ubah Alamat</h3>
+            <h3 className="w-full text-lg font-bold">Ubah Alamat</h3>
             <form
               id="change"
               onSubmit={handlerChange}
-              className="flex gap-2 flex-col my-4"
+              className="my-4 flex flex-col gap-2"
             >
               <Div>
                 <TextField
@@ -323,7 +323,7 @@ const CardAddress = (props) => {
                   defaultValue={data.alamat_detail}
                 ></textarea>
               </label>
-              <div className="grid grid-cols-2 gap-2 mt-2">
+              <div className="mt-2 grid grid-cols-2 gap-2">
                 <Button
                   type="button"
                   onClick={async () => dialogRef.current.close()}
@@ -335,7 +335,7 @@ const CardAddress = (props) => {
             </form>
           </div>
         ) : (
-          <div className="flex justify-center items-center min-h-full min-w-full ">
+          <div className="flex min-h-full min-w-full items-center justify-center">
             <span className="loading loading-spinner w-20 text-base-300"></span>
           </div>
         )}

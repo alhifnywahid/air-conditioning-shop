@@ -13,9 +13,9 @@ const CartIcon = () => {
     <>
       <Link
         to="/keranjang"
-        className="btn btn-ghost indicator flex md:hidden h-fit gap-1 flex-col"
+        className="btn btn-ghost indicator flex h-fit flex-col gap-1 md:hidden"
       >
-        <span className="indicator-item badge badge-primary rounded-full left-11 p-1 top-2">
+        <span className="badge indicator-item badge-primary left-11 top-2 rounded-full p-1">
           {cart ? cart.length : 0}
         </span>
         <BsMinecartLoaded size="25" />
@@ -25,16 +25,16 @@ const CartIcon = () => {
         to="/keranjang"
         onMouseEnter={() => setOnHover(true)}
         onMouseLeave={() => setOnHover(false)}
-        className="group btn btn-ghost justify-center dropdown dropdown-bottom dropdown-end dropdown-hover indicator gap-1 hidden md:inline-flex"
+        className="group btn dropdown dropdown-end dropdown-bottom dropdown-hover btn-ghost indicator hidden justify-center gap-1 md:inline-flex"
       >
-        <span className="indicator-item p-1 badge badge-primary rounded-full left-5 top-3">
+        <span className="badge indicator-item badge-primary left-5 top-3 rounded-full p-1">
           {cart ? cart.length : 0}
         </span>
         <BsMinecartLoaded size="25" />
-        <span className="hidden group-hover:block w-full h-full absolute -bottom-10"></span>
+        <span className="absolute -bottom-10 hidden h-full w-full group-hover:block"></span>
       </Link>
       <div
-        className={`mt-5 absolute dropdown-content z-1 menu p-2 shadow bg-base-100 rounded-box w-80 gap-2 top-11 right-0 ${
+        className={`z-1 menu dropdown-content absolute right-0 top-11 mt-5 w-80 gap-2 rounded-box bg-base-100 p-2 shadow ${
           onHover ? "flex" : "hidden"
         }`}
         onMouseEnter={() => setOnHover(true)}
@@ -42,7 +42,7 @@ const CartIcon = () => {
       >
         {cart && cart.length != 0 ? (
           <>
-            <div className="flex flex-col gap-2 max-h-60 overflow-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            <div className="flex max-h-60 flex-col gap-2 overflow-scroll [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {cart.map((item, i) => (
                 <CartCard
                   key={i}
@@ -70,10 +70,10 @@ function CartCard({ to, product, ...props }) {
     <Link
       {...props}
       to={to}
-      className="border hover:bg-base-200 hover:border-blue-400 rounded-lg h-20 flex p-1 gap-2"
+      className="flex h-20 gap-2 rounded-lg border p-1 hover:border-blue-400 hover:bg-base-200"
     >
-      <img className="rounded aspect-square h-full" src={product.image[0]} />
-      <div className="overflow-hidden flex flex-col justify-between p-2 w-fit">
+      <img className="aspect-square h-full rounded" src={product.image[0]} />
+      <div className="flex w-fit flex-col justify-between overflow-hidden p-2">
         <h2 className="line-clamp-1 text-ellipsis text-base">
           {product.title}
         </h2>

@@ -22,15 +22,15 @@ function Cart() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col justify-center lg:flex-row gap-4 min-h-[60vh]">
-          <div className="flex flex-col gap-4 basis-3/4 p-6 shadow-custom-1 rounded-xl">
-            <h2 className="text-xl font-bold w-fit md:text-3xl">Keranjang</h2>
-            <div className="overflow-x-auto w-full">
+        <div className="flex min-h-[60vh] flex-col justify-center gap-4 rounded-xl bg-base-100 p-5 2xl:container lg:flex-row">
+          <div className="flex basis-3/4 flex-col gap-4 rounded-xl p-6 shadow-custom-1">
+            <h2 className="w-fit text-xl font-bold md:text-3xl">Keranjang</h2>
+            <div className="w-full overflow-x-auto">
               <TableProduct setListCart={setListCart} listCart={listCart} />
             </div>
           </div>
-          <div className="flex flex-col gap-4 basis-2/4 p-6 sticky top-20 shadow-custom-1 rounded-xl h-fit">
-            <h2 className="text-xl font-bold w-fit md:text-3xl">Checkout</h2>
+          <div className="sticky top-20 flex h-fit basis-2/4 flex-col gap-4 rounded-xl p-6 shadow-custom-1">
+            <h2 className="w-fit text-xl font-bold md:text-3xl">Checkout</h2>
             <TablePayment listCart={listCart} />
             <Button onClick={handlerBuyNow}>Beli Sekarang</Button>
           </div>
@@ -129,13 +129,13 @@ const TableProduct = (props) => {
             </th>
             <td>
               <div className="flex items-center gap-3">
-                <div className="avatar shadow relative">
-                  <div className="mask mask-squircle w-16 h-16 md:h-28 md:w-28">
+                <div className="avatar relative shadow">
+                  <div className="mask mask-squircle h-16 w-16 md:h-28 md:w-28">
                     <img src={product.data.image[0]} />
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold line-clamp-2">
+                  <div className="line-clamp-2 font-bold">
                     {product.data.title}
                   </div>
                   <div className="text-sm opacity-50">- 2 PK</div>
@@ -147,9 +147,9 @@ const TableProduct = (props) => {
             </td>
             <td className="text-center">{formatIDR(product.data.price)}</td>
             <th>
-              <div className="flex gap-2 justify-center items-center">
+              <div className="flex items-center justify-center gap-2">
                 <Button
-                  className="btn-square disabled:bg-gray-500 disabled:color-black"
+                  className="disabled:color-black btn-square disabled:bg-gray-500"
                   onClick={handlerDelete}
                   value={product.productId}
                 >
@@ -171,7 +171,7 @@ const TableProduct = (props) => {
       </tbody>
     </table>
   ) : (
-    <div className="h-64 lg:h-96 w-full flex justify-center items-center">
+    <div className="flex h-64 w-full items-center justify-center lg:h-96">
       <p>Keranjang Kosong...</p>
     </div>
   );

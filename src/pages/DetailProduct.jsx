@@ -48,9 +48,9 @@ function DetailProduct() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center lg:flex-row">
-          <div className="w-full lg:flex gap-4 flex-1 xl:px-6 xl:gap-8">
-            <div className="flex flex-col md:flex-row gap-3 lg:flex-col flex-1">
+        <div className="flex flex-col-reverse items-center justify-center rounded-xl bg-base-100 p-5 2xl:container lg:flex-row">
+          <div className="w-full flex-1 gap-4 lg:flex xl:gap-8 xl:px-6">
+            <div className="flex flex-1 flex-col gap-3 md:flex-row lg:flex-col">
               <ImagePriview
                 imgActive={imgActive}
                 productsRec={productsRecommend}
@@ -77,7 +77,7 @@ function DetailProduct() {
                   product={products}
                   productsRec={productsRecommend}
                 />
-                <div className="overflow-x-auto w-full">
+                <div className="w-full overflow-x-auto">
                   <TableDescription
                     products={products}
                     productsRec={productsRecommend}
@@ -96,24 +96,24 @@ function DetailProduct() {
 const ShareProduct = ({ className, productsRec }) => {
   return (
     productsRec.length != 0 && (
-      <div className={`flex gap-2 my-4 xl:my-0 ${className}`}>
+      <div className={`my-4 flex gap-2 xl:my-0 ${className}`}>
         <span>Bagikan ke : </span>
         <Link to="#">
           <FaFacebookSquare
             size={25}
-            className="fill-blue-400 hover:outline rounded outline-gray-400 outline-2"
+            className="rounded fill-blue-400 outline-2 outline-gray-400 hover:outline"
           />
         </Link>
         <Link to="#">
           <FaWhatsappSquare
             size={25}
-            className="fill-green-400 hover:outline rounded outline-gray-400 outline-2"
+            className="rounded fill-green-400 outline-2 outline-gray-400 hover:outline"
           />
         </Link>
         <Link to="#">
           <FaInstagramSquare
             size={25}
-            className="fill-red-500 hover:outline rounded outline-gray-400 outline-2"
+            className="rounded fill-red-500 outline-2 outline-gray-400 hover:outline"
           />
         </Link>
       </div>
@@ -128,11 +128,11 @@ const ImagePriview = ({ imgActive, productsRec }) => {
         src={imgActive}
         loading="lazy"
         alt="image priview"
-        className="w-full aspect-square object-contain rounded-lg xl:w-[70%] mx-auto"
+        className="mx-auto aspect-square w-full rounded-lg object-contain xl:w-[70%]"
       />
     </div>
   ) : (
-    <div className="skeleton w-full aspect-[4/3] rounded-lg mx-auto"></div>
+    <div className="skeleton mx-auto aspect-[4/3] w-full rounded-lg"></div>
   );
 };
 const ListImages = (props) => {
@@ -144,14 +144,14 @@ const ListImages = (props) => {
             <img
               key={i}
               src={img}
-              className={`border-2 w-24 aspect-square object-contain hover:border-blue-400 cursor-pointer rounded-md my-4 md:my-0 lg:my-4 ${
+              className={`my-4 aspect-square w-24 cursor-pointer rounded-md border-2 object-contain hover:border-blue-400 md:my-0 lg:my-4 ${
                 img == imgActive && "border-blue-400"
               }`}
               onClick={(e) => setImgActive(e.target.src)}
             />
           ))
         : [...Array(6)].map((_, i) => (
-            <div key={i} className="skeleton rounded w-24 aspect-square"></div>
+            <div key={i} className="skeleton aspect-square w-24 rounded"></div>
           ))}
     </div>
   );
@@ -165,7 +165,7 @@ const TableDescription = ({ productsRec, products }) => {
           (desc, i) =>
             i != 9 && (
               <tr key={i} className="w-fit">
-                <th className="capitalize lg:p-0 w-fit lg:text-nowrap">
+                <th className="w-fit capitalize lg:text-nowrap lg:p-0">
                   {desc[0].replaceAll("_", " ")}
                 </th>
                 <td>:</td>
@@ -179,8 +179,8 @@ const TableDescription = ({ productsRec, products }) => {
     <div className="mt-8">
       {[...Array(7)].map((_, i) => (
         <div key={i} className="flex gap-4 p-2 ps-0">
-          <span className="skeleton block w-60 h-6 rounded"></span>
-          <span className="skeleton block w-60 h-6 rounded"></span>
+          <span className="skeleton block h-6 w-60 rounded"></span>
+          <span className="skeleton block h-6 w-60 rounded"></span>
         </div>
       ))}
     </div>
@@ -190,13 +190,13 @@ const TableDescription = ({ productsRec, products }) => {
 const ProductsRecommend = ({ productsRec }) => {
   return (
     <section className="bg-base-200 pb-2">
-      <div className="2xl:container bg-base-100 rounded-xl flex flex-col">
+      <div className="flex flex-col rounded-xl bg-base-100 2xl:container">
         {productsRec.length != 0 ? (
-          <h2 className="text-2xl font-bold pt-5 px-5">Produk Serupa</h2>
+          <h2 className="px-5 pt-5 text-2xl font-bold">Produk Serupa</h2>
         ) : (
-          <span className="block skeleton rounded w-60 h-6 mx-5"></span>
+          <span className="skeleton mx-5 block h-6 w-60 rounded"></span>
         )}
-        <div className="2xl:container bg-base-100 rounded-xl p-5 grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 relative">
+        <div className="relative grid grid-cols-2 gap-3 rounded-xl bg-base-100 p-5 2xl:container sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {productsRec.length != 0
             ? productsRec.map((product, i) => (
                 <CardProduct key={i} item={product} />
@@ -249,16 +249,16 @@ const TitlePrduct = (props) => {
         <>
           <h1 className="text-xl font-bold">{product.title}</h1>
           <p className="text-lg font-bold">{formatIDR(product.price)}</p>
-          <div className="flex gap-2 my-4">
+          <div className="my-4 flex gap-2">
             <Button
-              className="flex-1 md:flex-initial md:w-60"
+              className="flex-1 md:w-60 md:flex-initial"
               onClick={handlerBuy}
             >
               Beli Sekarang
             </Button>
             <Button
               disabled={!load}
-              className="flex-1 md:flex-initial md:w-60"
+              className="flex-1 md:w-60 md:flex-initial"
               onClick={handlreToCart}
             >
               {!load ? <Spinner size="md" /> : inner}
@@ -267,8 +267,8 @@ const TitlePrduct = (props) => {
         </>
       ) : (
         <>
-          <span className="skeleton w-full h-8 rounded"></span>
-          <span className="skeleton w-60 h-8 rounded"></span>
+          <span className="skeleton h-8 w-full rounded"></span>
+          <span className="skeleton h-8 w-60 rounded"></span>
           <div className="flex gap-4">
             <span className="skeleton h-12 w-36 rounded"></span>
             <span className="skeleton h-12 w-36 rounded"></span>

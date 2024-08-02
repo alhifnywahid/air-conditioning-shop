@@ -8,7 +8,7 @@ const AccountIcon = () => {
         <VscAccount size="25" />
       </Link>
       <Link
-        className="btn btn-ghost flex flex-col gap-1 h-fit md:hidden"
+        className="btn btn-ghost flex h-fit flex-col gap-1 md:hidden"
         to="/akun"
       >
         <VscAccount size="25" />

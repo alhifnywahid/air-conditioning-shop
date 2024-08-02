@@ -132,7 +132,7 @@ const Checkout = () => {
 
   return (
     <section className="bg-base-200 2xl:py-2">
-      <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col justify-center lg:flex-row gap-4 min-h-[60vh]">
+      <div className="flex min-h-[60vh] flex-col justify-center gap-4 rounded-xl bg-base-100 p-5 2xl:container lg:flex-row">
         <div className="w-full">
           <p className="text-xl font-medium">Detail Pembayaran</p>
           <Tabs tabsData={dataTabs} className="mt-4" />
@@ -151,13 +151,13 @@ const Checkout = () => {
             ))}
           </form> */}
         </div>
-        <div className="w-full bg-gray-50 p-4 rounded-lg shadow h-fit">
+        <div className="h-fit w-full rounded-lg bg-gray-50 p-4 shadow">
           <p className="text-xl font-medium">Detail Pesanan</p>
           <div className="mt-3 space-y-3 rounded-lg border px-2 py-4 sm:px-6">
             {products &&
               products.map((v, i) => <ProductList key={i} data={v.data} />)}
           </div>
-          <div className="mt-6 border-t border-b py-2">
+          <div className="mt-6 border-b border-t py-2">
             <FooterPay title="Total" value={totals.subTotal} />
             {/* <FooterPay title="Admin Pembayaran" value={totals.admin} /> */}
             <FooterPay title="Pengiriman" value={0} />
@@ -167,7 +167,7 @@ const Checkout = () => {
             value={totals.subTotal + totals.admin}
             v={true}
           />
-          <Button onClick={createPayment} className="w-full mt-4">
+          <Button onClick={createPayment} className="mt-4 w-full">
             Buat Pesanan
           </Button>
         </div>
@@ -186,23 +186,23 @@ const CardList = ({ data, name, ...props }) => {
         name={name}
         {...props}
       />
-      <span className="peer-checked:border-blue-500 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white" />
+      <span className="absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white peer-checked:border-blue-500" />
       <label
-        className="peer-checked:border peer-checked:border-blue-500 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
+        className="flex cursor-pointer select-none rounded-lg border border-gray-300 p-4 peer-checked:border peer-checked:border-blue-500 peer-checked:bg-gray-50"
         htmlFor={data.title}
       >
         {data.path && <img className="w-14 object-contain" src={data.path} />}
         <div className={data.path && "ml-5"}>
           <span className="mt-2 font-semibold">{data.title}</span>
           {data.admin ? (
-            <p className="text-slate-500 text-sm leading-6">
+            <p className="text-sm leading-6 text-slate-500">
               Biaya admin: {formatIDR(data.admin)}
             </p>
           ) : (
-            <p className="text-slate-500 text-sm leading-6">{data.phone}</p>
+            <p className="text-sm leading-6 text-slate-500">{data.phone}</p>
           )}
           {data.address && (
-            <p className="text-slate-500 text-sm leading-6">{data.address}</p>
+            <p className="text-sm leading-6 text-slate-500">{data.address}</p>
           )}
         </div>
       </label>
@@ -218,7 +218,7 @@ const ProductList = ({ data }) => {
         src={data.image[0]}
       />
       <div className="flex w-full flex-col px-4 py-4">
-        <span className="font-medium line-clamp-1">{data.title}</span>
+        <span className="line-clamp-1 font-medium">{data.title}</span>
         <span className="float-right text-gray-400">{data.brand}</span>
         <p className="font-medium">{formatIDR(data.price)}</p>
       </div>
@@ -277,7 +277,7 @@ const NextAddress = (props) => {
   const { address, setAddress, cart } = props;
   const addressChange = (e) => {};
   return (
-    <div id="change" className="flex gap-2 flex-col">
+    <div id="change" className="flex flex-col gap-2">
       <Div>
         <TextField title="Nama Alamat" placeholder="Kantor" />
         <TextField title="Nama Penerima" placeholder="C Ronaldo" />

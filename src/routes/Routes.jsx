@@ -90,7 +90,7 @@ const router = createBrowserRouter([
             <Checkout />
           </Protected>
         ),
-      }
+      },
     ],
   },
   {

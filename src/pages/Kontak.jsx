@@ -42,22 +42,22 @@ function Kontak() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 rounded-xl p-5 flex flex-col-reverse justify-center items-center lg:flex-row">
-          <div className="flex flex-col gap-4 justify-center items-center md:flex-1 lg:items-start box-border lg:m-6">
-            <h2 className="text-3xl font-bold w-fit md:text-3xl">
+        <div className="flex flex-col-reverse items-center justify-center rounded-xl bg-base-100 p-5 2xl:container lg:flex-row">
+          <div className="box-border flex flex-col items-center justify-center gap-4 md:flex-1 lg:m-6 lg:items-start">
+            <h2 className="w-fit text-3xl font-bold md:text-3xl">
               Kontak Kami
             </h2>
-            <p className="w-fit text-center lg:text-left xl:text-xl xs:w-[90%] sm:w-[70%] lg:w-[85%]">
+            <p className="w-fit text-center xs:w-[90%] sm:w-[70%] lg:w-[85%] lg:text-left xl:text-xl">
               Jangan ragu untuk menghubungi kami kapan saja. Kami akan
               menghubungi Anda sesegera mungkin.
             </p>
-            <div className="flex-1 flex justify-center items-start gap-1 mt-2 w-full lg:justify-start">
+            <div className="mt-2 flex w-full flex-1 items-start justify-center gap-1 lg:justify-start">
               {listContact.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-col gap-4 p-4 bg-base-100 rounded-xl cursor-pointer border hover:border-blue-300 xs:w-full lg:w-fit"
+                  className="flex cursor-pointer flex-col gap-4 rounded-xl border bg-base-100 p-4 hover:border-blue-300 xs:w-full lg:w-fit"
                 >
-                  <div className="flex gap-3 justify-center items-center">
+                  <div className="flex items-center justify-center gap-3">
                     {item.icon}
                     <div>
                       <h3 className="text-md font-semibold">{item.title}</h3>
@@ -74,8 +74,8 @@ function Kontak() {
         </div>
       </section>
       <section className="bg-base-200 2xl:pb-2">
-        <div className="2xl:container bg-base-200 2xl:bg-base-100 rounded-xl p-5 flex flex-col md:flex-row gap-3">
-          <form onSubmit={formMessage} className="flex flex-col gap-2 flex-1">
+        <div className="flex flex-col gap-3 rounded-xl bg-base-200 p-5 2xl:container md:flex-row 2xl:bg-base-100">
+          <form onSubmit={formMessage} className="flex flex-1 flex-col gap-2">
             <select
               className="select select-bordered"
               required
@@ -91,7 +91,7 @@ function Kontak() {
               <FaRegUser size={25} />
               <input
                 type="text"
-                className="grow h-[3rem]"
+                className="h-[3rem] grow"
                 placeholder="Nama lengkap"
                 required
               />
@@ -100,7 +100,7 @@ function Kontak() {
               <MdOutlineMailOutline size={25} />
               <input
                 type="email"
-                className="grow h-[3rem]"
+                className="h-[3rem] grow"
                 placeholder="Email aktif"
                 required
               />
@@ -113,7 +113,7 @@ function Kontak() {
             <Button type="submit">Kirim</Button>
           </form>
 
-          <div className="flex-1 lg:flex-auto rounded-md overflow-hidden shadow border-2 h-[400px] ">
+          <div className="h-[400px] flex-1 overflow-hidden rounded-md border-2 shadow lg:flex-auto">
             <iframe
               width="100%"
               height="100%"

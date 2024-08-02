@@ -21,12 +21,10 @@ function Akun() {
     });
   }, [user]);
   const dialogRef = useRef(null);
-  const addAddress = () => {
-    
-  };
+  const addAddress = () => {};
   return (
-    <div className="flex flex-col gap-4 basis-4/5 p-6 sticky top-20 rounded-xl bg-base-100">
-      <h2 className="font-bold w-full text-left text-lg">Detail Akun</h2>
+    <div className="sticky top-20 flex basis-4/5 flex-col gap-4 rounded-xl bg-base-100 p-6">
+      <h2 className="w-full text-left text-lg font-bold">Detail Akun</h2>
       <div className="overflow-x-auto">
         <table className="table w-fit">
           <tbody>
@@ -42,12 +40,12 @@ function Akun() {
       </Button>
       <dialog ref={dialogRef} className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg w-full text-center">Ubah Data</h3>
+          <h3 className="w-full text-center text-lg font-bold">Ubah Data</h3>
           <form
             method="post"
             action=""
             onSubmit={addAddress}
-            className="flex gap-2 flex-col my-4"
+            className="my-4 flex flex-col gap-2"
           >
             <label className="input input-bordered flex items-center gap-2">
               <input

@@ -33,16 +33,16 @@ function Galery() {
   return (
     <>
       <section className="bg-base-200 2xl:py-2">
-        <div className="2xl:container bg-base-100 p-5 flex flex-col gap-4 justify-center items-center rounded-xl">
-          <div className="flex flex-col gap-4 justify-center items-center">
+        <div className="flex flex-col items-center justify-center gap-4 rounded-xl bg-base-100 p-5 2xl:container">
+          <div className="flex flex-col items-center justify-center gap-4">
             {!isLoading ? (
               <>
-                <div className="h-10 w-96 skeleton rounded"></div>
-                <div className="h-10 w-96 skeleton rounded"></div>
+                <div className="skeleton h-10 w-96 rounded"></div>
+                <div className="skeleton h-10 w-96 rounded"></div>
               </>
             ) : (
               <>
-                <h2 className="text-3xl font-bold w-fit md:text-3xl">Galery</h2>
+                <h2 className="w-fit text-3xl font-bold md:text-3xl">Galery</h2>
                 <p className="w-fit text-justify md:text-left md:text-xl">
                   Dokumentasi proyek yang telah kami tangani.
                 </p>
@@ -50,22 +50,22 @@ function Galery() {
             )}
           </div>
           {!isLoading ? (
-            <div className="skeleton aspect-[4/2] xl:aspect-[4/1] w-full h-96"></div>
+            <div className="skeleton aspect-[4/2] h-96 w-full xl:aspect-[4/1]"></div>
           ) : (
-            <div className="rounded-md w-full aspect-[4/2] xl:aspect-[4/1] relative overflow-hidden skeleton">
+            <div className="skeleton relative aspect-[4/2] w-full overflow-hidden rounded-md xl:aspect-[4/1]">
               <Slider
                 ref={(slider) => {
                   sliderRef = slider;
                 }}
                 {...settings}
-                className="rounded-md w-full aspect-[4/2] xl:aspect-[4/1]"
+                className="aspect-[4/2] w-full rounded-md xl:aspect-[4/1]"
               >
                 {imageHeader.map((item, index) => (
                   <img
                     key={index}
                     src={item}
                     loading="lazy"
-                    className="aspect-[4/2] xl:aspect-[4/1] object-cover"
+                    className="aspect-[4/2] object-cover xl:aspect-[4/1]"
                   />
                 ))}
               </Slider>
@@ -76,13 +76,13 @@ function Galery() {
         </div>
       </section>
       <section className="bg-base-200 2xl:pb-2">
-        <div className="2xl:container bg-base-100 p-5 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 rounded-xl">
+        <div className="grid grid-cols-2 gap-2 rounded-xl bg-base-100 p-5 2xl:container lg:grid-cols-3 xl:grid-cols-4">
           {imageHeader.length <= 0 &&
             imgBody.length <= 0 &&
             [...Array(50)].map((_, i) => (
               <div
                 key={i}
-                className="w-full aspect-square bg-slate-200 rounded-md skeleton"
+                className="skeleton aspect-square w-full rounded-md bg-slate-200"
               />
             ))}
 
@@ -92,7 +92,7 @@ function Galery() {
                 <PhotoView key={i} src={img}>
                   <img
                     loading="lazy"
-                    className="rounded-md shadow hover:border border-blue-400 cursor-zoom-in"
+                    className="cursor-zoom-in rounded-md border-blue-400 shadow hover:border"
                     src={img}
                   />
                 </PhotoView>
@@ -108,9 +108,9 @@ function Galery() {
 const Arrow = ({ onClick, type }) => {
   return (
     <button
-      className={`bg-white absolute ${
+      className={`absolute bg-white ${
         type === "prev" ? "left-5" : "right-5"
-      } top-1/2 transform -translate-y-1/2 btn border-none btn-circle bg-[rgba(0,0,0,0.3)]`}
+      } btn btn-circle top-1/2 -translate-y-1/2 transform border-none bg-[rgba(0,0,0,0.3)]`}
       onClick={onClick}
     >
       {type === "prev" ? <FcPrevious /> : <FcNext />}

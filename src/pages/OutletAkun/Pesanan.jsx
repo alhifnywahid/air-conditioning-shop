@@ -56,7 +56,7 @@ function Pesanan() {
   }, [user]);
 
   return (
-    <div className="flex flex-col gap-4 basis-4/5 p-6 rounded-xl bg-base-100 relative">
+    <div className="relative flex basis-4/5 flex-col gap-4 rounded-xl bg-base-100 p-6">
       <Tabs tabsData={tabsData} className="h-full" />
     </div>
   );
@@ -64,9 +64,9 @@ function Pesanan() {
 
 const Nothing = () => {
   return (
-    <div className="flex flex-col gap-4 justify-center items-center w-full h-full">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4">
       <img
-        className="w-32 aspect-square"
+        className="aspect-square w-32"
         src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/orderlist/5fafbb923393b712b964.png"
       />
       <h3>Belum ada pesanan</h3>
@@ -157,9 +157,9 @@ const OrderList = ({ data }) => {
   return (
     <Link
       onClick={() => toast.error("Fitur ini belum tersedia")}
-      className="hover:border-blue-300 relative border border-gray-300"
+      className="relative border border-gray-300 hover:border-blue-300"
     >
-      <div className="px-4 py-2 border-b flex justify-between font-semibold">
+      <div className="flex justify-between border-b px-4 py-2 font-semibold">
         <p>{data.date}</p>
         <p className="capitalize">
           {data.status == "pending" ? "Menunggu Pembayaran" : "Diproses"}
@@ -167,12 +167,12 @@ const OrderList = ({ data }) => {
       </div>
       {data.data.map((v, i) => (
         <Fragment key={i}>
-          <div className="flex justify-between items-center gap-4 rounded-lg p-4">
+          <div className="flex items-center justify-between gap-4 rounded-lg p-4">
             <img
-              className="w-1/12 object-cover rounded-md overflow-hidden border"
+              className="w-1/12 overflow-hidden rounded-md border object-cover"
               src={v.image[0]}
             />
-            <p className="overflow-hidden w-7/12 line-clamp-3">{v.title}</p>
+            <p className="line-clamp-3 w-7/12 overflow-hidden">{v.title}</p>
             <p className="w-1/12 text-center">{formatIDR(v.price)}</p>
             <p className="w-1/12 text-center">{v.brand.split(" ")[0]}</p>
           </div>

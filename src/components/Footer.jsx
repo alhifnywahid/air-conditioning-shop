@@ -4,15 +4,15 @@ function Footer() {
   const dataLink = ["Home", "Layanan", "Galery", "Kerja Sama", "Kontak"];
 
   return (
-    <div className="pt-10 px-2 mb-20 md:px-6 md:mb-5">
+    <div className="mb-20 px-2 pt-10 md:mb-5 md:px-6">
       <div className="2xl:container">
-        <div className="bg-blue-400 rounded-xl p-4 flex flex-col gap-1 md:gap-4 md:flex-row">
-          <div className=" h-fit py-4 md:my-4 md:ms-4">
-            <h2 className="font-bold text-xl text-white text-center md:text-left text-nowrap">
+        <div className="flex flex-col gap-1 rounded-xl bg-blue-400 p-4 md:flex-row md:gap-4">
+          <div className="h-fit py-4 md:my-4 md:ms-4">
+            <h2 className="text-nowrap text-center text-xl font-bold text-white md:text-left">
               Daftarkan Sekarang! <br /> Untuk mendapatkan update terbaru.
             </h2>
           </div>
-          <div className="flex justify-between bg-white p-4 md:my-4 md:me-4 rounded-xl w-full gap-2 md:gap-4 md:justify-center md:items-center">
+          <div className="flex w-full justify-between gap-2 rounded-xl bg-white p-4 md:my-4 md:me-4 md:items-center md:justify-center md:gap-4">
             <label htmlFor="subscirbe" className="w-full">
               <input
                 type="email"
@@ -23,7 +23,7 @@ function Footer() {
             <Button className="w-fit">Langaanan</Button>
           </div>
         </div>
-        <ul className="hidden gap-3 md:flex my-4">
+        <ul className="my-4 hidden gap-3 md:flex">
           {dataLink.map((item, index) => (
             <li key={index}>
               <Link className="hover:text-blue-400">{item}</Link>
@@ -31,16 +31,16 @@ function Footer() {
           ))}
         </ul>
         <div className="divider"></div>
-        <div className="flex flex-col gap-2 items-center md:flex-row justify-between">
-          <h3 className="order-3 md:order-1 text-sm md:flex-1">
+        <div className="flex flex-col items-center justify-between gap-2 md:flex-row">
+          <h3 className="order-3 text-sm md:order-1 md:flex-1">
             © 2024 BerkahTeknik. All rights reserved.
           </h3>
-          <Link className="text-3xl font-bold order-1 ">Berkah Teknik</Link>
-          <div className="order-2 flex gap-2 md:flex-1 justify-end">
-            <Link className="hover:text-blue-400 text-sm" to="/">
+          <Link className="order-1 text-3xl font-bold">Berkah Teknik</Link>
+          <div className="order-2 flex justify-end gap-2 md:flex-1">
+            <Link className="text-sm hover:text-blue-400" to="/">
               Terms of Service
             </Link>
-            <Link className="hover:text-blue-400 text-sm" to="/">
+            <Link className="text-sm hover:text-blue-400" to="/">
               Privacy Policy
             </Link>
           </div>

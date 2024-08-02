@@ -24,14 +24,14 @@ const NavMobile = () => {
 
   return (
     <>
-      <div className="flex justify-evenly items-center fixed bottom-0 w-full z-10 shadow-inner p-2 md:hidden bg-blue-500 text-white font-bold">
-        <Link to="/" className="btn btn-ghost flex flex-col gap-1 h-fit">
+      <div className="fixed bottom-0 z-10 flex w-full items-center justify-evenly bg-blue-500 p-2 font-bold text-white shadow-inner md:hidden">
+        <Link to="/" className="btn btn-ghost flex h-fit flex-col gap-1">
           <IoHomeOutline size="25" />
           Beranda
         </Link>
         <button
           onClick={openModal}
-          className="btn btn-ghost flex flex-col gap-1 h-fit"
+          className="btn btn-ghost flex h-fit flex-col gap-1"
           to="#"
         >
           <BsFillMenuButtonWideFill size="25" />
@@ -40,10 +40,10 @@ const NavMobile = () => {
         <CartIcon />
         <AccountIcon />
         <dialog ref={modalRef} className="modal" onClick={closeModal}>
-          <div className="modal-box bg-base text-black fixed bottom-0 left-0 w-full rounded-xl rounded-b-none flex flex-col gap-1">
+          <div className="bg-base modal-box fixed bottom-0 left-0 flex w-full flex-col gap-1 rounded-xl rounded-b-none text-black">
             <GoTo onClick={closeModal} />
             <button
-              className="btn btn-ghost w-full flex justify-start gap-3 shadow"
+              className="btn btn-ghost flex w-full justify-start gap-3 shadow"
               onClick={closeModal}
             >
               <IoMdCloseCircleOutline size={25} />
@@ -79,7 +79,7 @@ const GoTo = ({ onClick }) => {
     <Link
       key={i}
       to={link}
-      className="btn btn-ghost w-full flex justify-start gap-3 shadow"
+      className="btn btn-ghost flex w-full justify-start gap-3 shadow"
       onClick={onClick}
     >
       {icon}
